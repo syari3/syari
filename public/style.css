@@ -1,0 +1,14 @@
+body {
+  background: radial-gradient(circle, #EEEEFF, #EEFFFF)
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.center {
+  /* このクラスを持つ要素が中央に配置されます */
+}
