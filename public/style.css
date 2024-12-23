@@ -12,3 +12,26 @@ body {
 .center {
   /* このクラスを持つ要素が中央に配置されます */
 }
+
+.box {
+  width: min(256px, 90vw);
+  height: min(256px, 90vw);
+  background-color: white;
+  border: 1px solid black;
+}
+
+.sbox {
+  width: 32px;
+  height: 32px;
+  background-color: #EEEEFF;
+  cursor : pointer;
+  border: 1px solid black;
+  border-radius: 4px; /* 半径を256pxの1/8に設定 */
+  position: relative;
+  overflow: hidden;
+}
+
+.image {
+  position: absolute;
+  display: none
+}
