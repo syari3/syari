@@ -2,6 +2,50 @@ body {
   background: radial-gradient(circle, #EEEEFF, #EEFFFF)
 }
 
+h2 {
+  word-break: keep-all;
+  overflow-wrap: anywhere; 
+}
+
+#dialog-cover {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 10
+}
+
+#dialog {
+  position: fixed;
+  background-color: #FFFFFF;
+  border-radius: 10px;
+  padding: 20px;
+  width: min(500px, 90vw);
+  height: min(256px, 90vw);
+  z-index: 11;
+}
+
+#dialog-btn {
+  background-color: #EEEEFF;
+  border: 1px solid #DDDDFF;
+  border-radius: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+#dialog-btn:hover {
+  background: radial-gradient(circle, rgba(220, 220, 255, 50), rgba(224, 220, 255, 50))
+}
+
 .container {
   display: flex;
   justify-content: center;
@@ -9,15 +53,12 @@ body {
   height: 100%;
 }
 
-.center {
-  /* このクラスを持つ要素が中央に配置されます */
-}
-
 .box {
   width: min(256px, 90vw);
   height: min(256px, 90vw);
   background-color: white;
-  border: 1px solid black;
+  border: 1px solid #CCCCDD;
+  margin: 30px;
 }
 
 .sbox {
@@ -25,10 +66,17 @@ body {
   height: 32px;
   background-color: #EEEEFF;
   cursor : pointer;
-  border: 1px solid black;
+  border: 1px solid #DDDDFF;
   border-radius: 4px; /* 半径を256pxの1/8に設定 */
   position: relative;
   overflow: hidden;
+  margin: 5px;
+  transition: background-color 0.3s;
+}
+
+
+.sbox:hover {
+  background: radial-gradient(circle, rgba(220, 220, 255, 50), rgba(224, 220, 255, 50))
 }
 
 .image {
