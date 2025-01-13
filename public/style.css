@@ -17,7 +17,8 @@ h2 {
   display: none;
   justify-content: center;
   align-items: center;
-  z-index: 10
+  z-index: 10;
+  opacity:0
 }
 
 #dialog {
@@ -47,15 +48,13 @@ h2 {
 }
 
 .container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
+  display: grid;
+  place-items: center;
 }
 
 .box {
-  width: min(256px, 90vw);
-  height: min(256px, 90vw);
+  width: min(256px, 90vw, 90vh);
+  height: min(256px, 90vw, 90vh);
   background-color: white;
   border: 1px solid #CCCCDD;
   margin: 30px;
@@ -74,12 +73,44 @@ h2 {
   transition: background-color 0.3s;
 }
 
-
 .sbox:hover {
   background: radial-gradient(circle, rgba(220, 220, 255, 50), rgba(224, 220, 255, 50))
+}
+
+.search-button{
+  width: 256px;
+  position: relative;
+  top: 0;
+  display: block;
+  padding: 26px 0;
+  background-color: #D0D0FF;
+  box-shadow: 0 6px #AAAAFF;
+  font-size: 22px;
+  border-radius: 5px;
+  color: #000000;
+  text-align: center;
+  text-decoration: none;
+  transition: .2s ease-in-out;
+  border: none;
+}
+.search-button:hover {
+  top: 2px; /* 元の位置から2px分下げる */
+  box-shadow: 0 4px #AAAAFF; /* 影を4pxにする */
+}
+.search-button:active {
+  top: 6px;
+  box-shadow: 0 0 #AAAAFF; 
 }
 
 .image {
   position: absolute;
   display: none
+}
+
+.item-container {
+  margin: 20px 0;
+  width: min(550px, 90vw);
+  height: 150px;
+  background-color: #FFFFFF;
+  border: 1px solid #CCCCDD;
 }

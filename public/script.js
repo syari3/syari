@@ -17,6 +17,7 @@ var lChangeTable = {
   image1: "l2",
   default: "l",
 };
+var parts = [];
 
 function id(id) {
   // 指定したidのやつをとってくる関数
@@ -71,18 +72,30 @@ function changeImage(changeTable) {
 function ifChange() {
   changeImage(oChangeTable);
   changeImage(zChangeTable);
-  changeImage(lChangeTable);
+  changeImage(lChangeTable);  
 }
-function dialog(message) {
+async function sleep(time) {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve();
+    }, time);
+  });
+}
+async function dialog(message) {
   // ダイアログを表示させる関数
   id("dialog-cover").style.display = "flex";
   id("message").textContent = message;
+  for(var i=1; i<=100; i++) {
+    id("dialog-cover").style.opacity = i**2/10000;
+    await sleep(10)
+  }
 }
 
 // EventListenerを追加する関数
 (function () {
   id("dialog-btn").addEventListener("click", function () {
     id("dialog-cover").style.display = "none";
+    id("dialog-cover").style.opacity = 0;
   });
   id("btn1").addEventListener("click", function () {
     onoff(
@@ -159,14 +172,6 @@ function dialog(message) {
 })();
 
 function adjustElementSize() {
-  const element = document.querySelector(".box");
-  element.style.width = `min(256px, 90vw);`;
-  element.style.height = `min(256px, 90vw);`;
-  if (document.body.clientWidth < 256) {
-    dialog(
-      "画面幅が小さいので、\n正しく表示できないかも。\n 256pxはあるといいかな。",
-    );
-  }
 }
 window.addEventListener("resize", adjustElementSize);
 adjustElementSize();
