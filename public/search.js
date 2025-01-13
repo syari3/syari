@@ -29,7 +29,7 @@ async function search() {
     dialog("少なくとも一つのパーツを入力してください。")
     return;
   }
-  var url = "https://9788f66b-f961-4be5-86a7-702fa6a3717d-00-3jjyqm01cm8dz.worf.replit.dev/search/" + parts;
+  var url = "https://syari.onrender.com/search/" + parts;
   console.log(typeof(parts))
   console.log(url)
   try {
