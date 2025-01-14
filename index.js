@@ -1,9 +1,20 @@
 const express = require('express');
 const path = require('path');
 const fs = require('fs')
+const cors = require('cors');
 
 const app = express();
 const port = 3000;
+
+app.use(cors());
+const corsOptions = {
+  origin: [
+    "https://syari.onrender.com/",
+    "https://9788f66b-f961-4be5-86a7-702fa6a3717d-00-3jjyqm01cm8dz.worf.replit.dev/"
+  ],
+  optionsSuccessStatus: 200, // For legacy browsers support
+};
+app.use(cors(corsOptions));
 
 // 静的ファイルの提供
 app.use(express.static('public'));

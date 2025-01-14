@@ -11,22 +11,52 @@
   },
   "sumessu-": {
     "yomi": "すめっすー",
-    "imi": "かれ (三人称単数)",
+    "imi": "彼",
     "parts": ["s", "ss", "o", "m"]
   },
   "sumesshi-": {
     "yomi": "すめっしー",
-    "imi": "かのじょ (三人称単数)",
+    "imi": "彼女",
     "parts": ["s", "ts", "o", "m"]
   },
-  "ome-zu": {
-    "yomi": "おめーず",
-    "imi": "あなたたち (二,三人称複数)",
-    "parts": ["s", "ns", "o", "m", "z"]
+  "sumennu-": {
+    "yomi": "すめっぬー",
+    "imi": "これ",
+    "parts": ["s", "ns", "o", "m"]
   },
-  "syari-zu": {
-    "yomi": "しゃりーず",
-    "imi": "わたしたち (一人称複数)",
-    "parts": ["s", "ts", "o", "m", "z"]
+  "monuyame-ya-": {
+    "yomi": "もぬやめーやー",
+    "imi": "シャリタツ(たれたすがた)",
+    "parts": ["ms", "ts", "o", "m"]
+  },
+  "monumonu-ya-": {
+    "yomi": "もぬもぬーやー",
+    "imi": "シャリタツ(のびたすがた)",
+    "parts": ["ms", "ns", "o", "m"]
+  },
+  "monumo-ya-": {
+    "yomi": "もぬもーやー",
+    "imi": "シャリタツ(そったすがた)",
+    "parts": ["ms", "ss","o", "m"]
+  },
+  "nusi-": {
+    "yomi": "ぬしー",
+    "imi": "主、ボス",
+    "parts": ["ss", "o"]
+  },
+  "nusya-": {
+    "yomi": "ぬしゃー",
+    "imi": "敵、獲物",
+    "parts": ["ts", "o"]
+  },
+  "syanusi-": {
+    "yomi": "しゃぬしー",
+    "imi": "従う人、従者",
+    "parts": ["ss", "o", "l"]
+  },
+  "syanusya-": {
+    "yomi": "しゃぬしゃー",
+    "imi": "味方、仲間",
+    "parts": ["ts", "o", "l"]
   }
 }
