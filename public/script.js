@@ -72,7 +72,15 @@ function changeImage(changeTable) {
 function ifChange() {
   changeImage(oChangeTable);
   changeImage(zChangeTable);
-  changeImage(lChangeTable);  
+  changeImage(lChangeTable); 
+  //HTML内に画像を表示
+  html2canvas(document.getElementById("target"),{
+    onrendered: function(canvas){
+      //imgタグのsrcの中に、html2canvasがレンダリングした画像を指定する。
+      var imgData = canvas.toDataURL();
+      document.getElementById("ss").href = imgData;
+    }
+  });
 }
 async function sleep(time) {
   return new Promise((resolve) => {
@@ -175,3 +183,5 @@ function adjustElementSize() {
 }
 window.addEventListener("resize", adjustElementSize);
 adjustElementSize();
+
+

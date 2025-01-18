@@ -76,7 +76,11 @@ async function search() {
     document.getElementById('result-container').innerHTML = '';
 
     var result = document.createElement('div');
-    result.textContent = `${data.length}個のデータが見つかりました。`
+    if (data.length > 0) {
+      result.textContent = `${data.length}個のデータが見つかりました。`
+    } else {
+      result.textContent = `該当するデータは見つかりませんでした。`
+    }
 
     id("result-container").appendChild(result)
     var i = 0;

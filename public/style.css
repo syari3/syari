@@ -7,6 +7,10 @@ h2 {
   overflow-wrap: anywhere; 
 }
 
+a {
+  margin: 20px
+}
+
 #dialog-cover {
   position: fixed;
   top: 0;

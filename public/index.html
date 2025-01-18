@@ -22,7 +22,7 @@
       <h2 class="center">シャリタツ語<wbr>文字検索</h2>
     </div>
     <div class="container">
-      <div class="box">
+      <div class="box" id="target">
         <img src="bigimg/s@8x.png" id="image1" class="image">
         <img src="bigimg/ms@8x.png" id="image2" class="image">
         <img src="bigimg/hs@8x.png" id="image3" class="image">
@@ -54,9 +54,11 @@
     </div>
     <div class="container">
       <button class="search-button" onclick="search()">検索！</button>
+      <a href="" id="ss" download="html_ss.png">画像をダウンロードする</a>
     </div>
     <br>
     <div id="result-container" class ="container"></div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.js"></script>
     <script src="script.js"></script>
     <script src="search.js"></script>
   </body>
