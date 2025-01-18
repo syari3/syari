@@ -177,6 +177,7 @@ async function dialog(message) {
   id("btn12").addEventListener("click", function () {
     onoff(id("image12"), id("btn12"));
   });
+  ifChange();
 })();
 
 function adjustElementSize() {
