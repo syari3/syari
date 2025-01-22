@@ -58,5 +58,310 @@
     "yomi": "しゃぬしゃー",
     "imi": "味方、仲間",
     "parts": ["ts", "o", "l"]
-  }
+  },
+  "susya-nu": {
+    "yomi": "すしゃーぬ",
+    "imi": "~である、~が存在する",
+    "parts": ["s","ns","u","z"]
+  },
+  "susisusi": {
+    "yomi": "すしすし",
+    "imi": "~が好き",
+    "parts": ["s","ss","m","z"]
+  },
+  "suyari-": {
+    "yomi": "すやりー",
+    "imi": "~を勉強する",
+    "parts": ["ms","ns","u","m","z"]
+  },
+  "susinu-": {
+    "yomi": "すしぬー",
+    "imi": "すしになる",
+    "parts": ["ms","ss","z"]
+  },
+  "susyanu-": {
+    "yomi": "すしゃぬー",
+    "imi": "(すしから)もどる",
+    "parts": ["ms","ss","l","z"]
+  },
+  "susu-nu": {
+    "yomi": "すすーぬ",
+    "imi": "~を作る",
+    "parts": ["ns","u","w","z"]
+  },
+  "suzu": {
+    "yomi": "すず",
+    "imi": "~を守る",
+    "parts": ["n","ts","m","z"]
+  },
+  "syasuzu": {
+    "yomi": "しゃすず",
+    "imi": "戦う",
+    "parts": ["s","ts","m","l","z"]
+  },
+  "simo-nu": {
+    "yomi": "しもーぬ",
+    "imi": "歩く",
+    "parts": ["ts","u","z"]
+  },
+  "syamo-nu": {
+    "yomi": "しゃもーぬ",
+    "imi": "泳ぐ",
+    "parts": ["ts","u","l","z"]
+  },
+  "sure-": {
+    "yomi": "すれー",
+    "imi": "~をする",
+    "parts": ["s","ns","m","u","z"]
+  },
+  "suri-": {
+    "yomi": "すりー",
+    "imi": "~を狩る",
+    "parts": ["s","ss","m","z"]
+  },
+  "sumo-zu": {
+    "yomi": "すもーず",
+    "imi": "協力する",
+    "parts": ["s","ss","u","m","w","z"]
+  },
+  "nu-su": {
+    "yomi": "ぬーす",
+    "imi": "~を使う",
+    "parts": ["ns","u","m","z"]
+  },
+  "omo-": {
+    "yomi": "おもー",
+    "imi": "～を思う、(~)と思う",
+    "parts": ["ts","m","w","z"]
+  },
+  "syanusu": {
+    "yomi": "しゃぬす",
+    "imi": "～に従う",
+    "parts": ["ss","l","z"]
+  },
+  "syanu": {
+    "yomi": "しゃぬ",
+    "imi": "~でない(否定)、いいえ",
+    "parts": ["l"]
+  },
+  "more-": {
+    "yomi": "もれー",
+    "imi": "とても",
+    "parts": ["hs","ss","u"]
+  },
+  "syanumore": {
+    "yomi": "しゃぬもれ",
+    "imi": "少し",
+    "parts": ["hs","ss","u","l"]
+  },
+  "yamo": {
+    "yomi": "やも",
+    "imi": "~と…、~なので",
+    "parts": ["hs","ss","m","w"]
+  },
+  "yammo": {
+    "yomi": "やっも",
+    "imi": "~だけど、しかし",
+    "parts": ["hs","ss","m","w","l"]
+  },
+  "monusi-": {
+    "yomi": "もぬしー",
+    "imi": "強い",
+    "parts": ["hs","ss"]
+  },
+  "mosyanusi-": {
+    "yomi": "もしゃぬしー",
+    "imi": "弱い",
+    "parts": ["hs","ss","l"]
+  },
+  "ya-yaya-ya": {
+    "yomi": "やーややーや",
+    "imi": "頭の悪い",
+    "parts": ["hs","ns","w","u","l"]
+  },
+  "sume-sume-": {
+    "yomi": "すめーすめー",
+    "imi": "頭の良い",
+    "parts": ["hs","ns","w","u"]
+  },
+  "syariri-": {
+    "yomi": "しゃりりー",
+    "imi": "こんにちは",
+    "parts": ["ms","ts","w"]
+  },
+  "syamo-": {
+    "yomi": "しゃもー",
+    "imi": "さようなら",
+    "parts": ["ms","ts","w","l"]
+  },
+  "syarime-": {
+    "yomi": "しゃりめー",
+    "imi": "ありがとう",
+    "parts": ["ms","ss","w"]
+  },
+  "yaya": {
+    "yomi": "やや",
+    "imi": "[文の最後につけ、丁寧文にする]",
+    "parts": ["ss","w"]
+  },
+  "susi": {
+    "yomi": "susi",
+    "imi": "すし",
+    "parts": ["ms","ss","o"]
+  },
+  "susyanu": {
+    "yomi": "すしゃぬ",
+    "imi": "生物、ポケモン",
+    "parts": ["ms","ss","o","l"]
+  },
+  "syamoya": {
+    "yomi": "しゃもや",
+    "imi": "水、池、海",
+    "parts": ["ts","u","o","l"]
+  },
+  "simoya": {
+    "yomi": "しもや",
+    "imi": "陸地、地面",
+    "parts": ["ts","u","o"]
+  },
+  "syaya": {
+    "yomi": "しゃや",
+    "imi": "山",
+    "parts": ["ts","u","m","o"]
+  },
+  "turinu-": {
+    "yomi": "つりぬー",
+    "imi": "木、草",
+    "parts": ["ts","u","m","w","o"]
+  },
+  "yasu-mo": {
+    "yomi": "やすーも",
+    "imi": "晴れ",
+    "parts": ["hs","ts","o"]
+  },
+  "yasu-ri": {
+    "yomi": "やすーり",
+    "imi": "曇り",
+    "parts": ["hs","ns","o"]
+  },
+  "yasu-me": {
+    "yomi": "やすーめ",
+    "imi": "雨",
+    "parts": ["hs","ss","o"]
+  },
+  "yasu-re": {
+    "yomi": "やすーれ",
+    "imi": "雪、あられ",
+    "parts": ["hs","ts","o","l"]
+  },
+  "yasu-nu": {
+    "yomi": "やすーぬ",
+    "imi": "雷、電気",
+    "parts": ["hs","ns","u","o"]
+  },
+  "yasu-sya": {
+    "yomi": "やすーしゃ",
+    "imi": "風、嵐、飛行",
+    "parts": ["hs","ss","u","o"]
+  },
+  "monusyanusya": {
+    "yomi": "もぬしゃぬしゃ",
+    "imi": "ヘイラッシャ",
+    "parts": ["ms","ts","o","l"]
+  },
+  "tume-": {
+    "yomi": "つめー",
+    "imi": "今日",
+    "parts": ["hs","ns","w","o"]
+  },
+  "turi-": {
+    "yomi": "つりー",
+    "imi": "昨日",
+    "parts": ["hs","ts","w","o"]
+  },
+  "tumo-": {
+    "yomi": "つもー",
+    "imi": "明日",
+    "parts": ["hs","ss","w","o"]
+  },
+  "yari": {
+    "yomi": "やり",
+    "imi": "旅",
+    "parts": ["s","ns","u","m","o"]
+  },
+  "syayari": {
+    "yomi": "しゃやり",
+    "imi": "絵",
+    "parts": ["s","ns","u","m","o","l"]
+  },
+  "sinu-re": {
+    "yomi": "しぬーれ",
+    "imi": "ノーマル",
+    "parts": ["ns","u","o"]
+  },
+  "susyasuzu": {
+    "yomi": "すしゃすず",
+    "imi": "格闘",
+    "parts": ["ts","m","u","o","z","l"]
+  },
+  "syaturinu": {
+    "yomi": "しゃつりぬ",
+    "imi": "毒",
+    "parts": ["ts","u","m","w","o","l"]
+  },
+  "suturinu-": {
+    "yomi": "すつりぬー",
+    "imi": "虫",
+    "parts": ["ts","u","m","w","o","z"]
+  },
+  "sya-nusu": {
+    "yomi": "しゃーぬす",
+    "imi": "岩",
+    "parts": ["hs","ss","u","o","z","l"]
+  },
+  "syanu-re": {
+    "yomi": "しゃぬーれ",
+    "imi": "ゴースト",
+    "parts": ["ns","u","o","l"]
+  },
+  "syayame": {
+    "yomi": "しゃやめ",
+    "imi": "鋼",
+    "parts": ["hs","ss","m","w","u","o"]
+  },
+  "syamo-ya": {
+    "yomi": "しゃもーや",
+    "imi": "炎、火",
+    "parts": ["ss","u","o","l"]
+  },
+  "simo-ya": {
+    "yomi": "しもーや",
+    "imi": "氷",
+    "parts": ["ss","u","o"]
+  },
+  "mesuya-": {
+    "yomi": "めすやー",
+    "imi": "エスパー",
+    "parts": ["hs","ns","m","w","u","o"]
+  },
+  "nusi-me": {
+    "yomi": "ぬしーめ",
+    "imi": "ドラゴン",
+    "parts": ["ss","m","u","o"]
+  },
+  "syamesuya-": {
+    "yomi": "しゃめすやー",
+    "imi": "悪、悪者",
+    "parts": ["hs","ns","m","w","u","o","l"]
+  },
+  "nusya-me": {
+    "yomi": "ぬしゃーめ",
+    "imi": "フェアリー",
+    "parts": ["ss","u","m","o","l"]
+  },
+  "ya-nu": {
+    "yomi": "やーぬ",
+    "imi": "~タイプ",
+    "parts": ["u","o"]
+  },
 }
