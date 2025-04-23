@@ -132,3 +132,17 @@ a {
   width: 64px;
   height: 64px;
 }
+
+
+.radio-container {
+  display: flex;
+  justify-content: center;
+}
+
+.radio {
+
+}
+
+#japanese-input {
+  margin: 20px;
+}

@@ -52,13 +52,23 @@ function getCorrectPart(part, parts) {
   }
 }
 
-async function search() {
+function search() {
+  const syariRadio = document.getElementById("syari-radio");
+  const japaneseRadio = document.getElementById("japanese-radio");
+  if (syariRadio.checked) {
+    searchParts();
+  } else if (japaneseRadio.checked) {
+    searchJapanese();
+  }
+}
+
+async function searchParts() {
   var parts = nowParts().join("-");
   if(parts == []) {
     dialog("少なくとも一つのパーツを入力してください。")
     return;
   }
-  var url = "https://syari.onrender.com/search/" + parts;
+  var url = "https://syari.onrender.com/search/parts/" + parts;
   console.log(typeof(parts))
   console.log(url)
   try {
@@ -117,5 +127,67 @@ async function search() {
   } catch (err) {
     console.error("Error parsing JSON string:", err);
 
+  }
+}
+
+async function searchJapanese() {
+  const inputValue = document.getElementById("japanese-input").value.trim();
+  const filename = '/data'; // エンドポイントを更新
+
+  try {
+    const response = await fetch(filename);
+
+    // Check if the response is ok (status in the range 200-299)
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+
+    const jsonData = await response.json();
+    const results = Object.entries(jsonData).filter(([key, value]) => value.yomi.includes(inputValue));
+    // Sort results by length of 'yomi'
+    results.sort((a, b) => a[1].yomi.length - b[1].yomi.length);
+
+    if(results.length > 0) {
+      dialog(`${results.length}個のデータが見つかりました。`)
+    } else {
+      dialog("該当するデータは見つかりませんでした。")
+    }
+
+    // Clear existing content
+    document.getElementById('result-container').innerHTML = '';
+    const resultMessage = document.createElement('div');
+    if (results.length > 0) {
+      resultMessage.textContent= `${results.length}個のデータが見つかりました。`
+    } else {
+      resultMessage.textContent= `該当するデータは見つかりませんでした。`
+    }
+    document.getElementById('result-container').appendChild(resultMessage);
+
+    // Create HTML elements for each item in the results
+    results.forEach(([key, item], index) => {
+      const container = document.createElement('div');
+      container.className = 'item-container container';
+      const yomiElement = document.createElement('span');
+      yomiElement.textContent = `読み方: ${item.yomi}`;
+      const imiElement = document.createElement('span');
+      imiElement.textContent = `意味: ${item.imi}`;
+
+      const imageContainer = document.createElement('div');
+      imageContainer.className = 'image-container';
+      item.parts.forEach(part => {
+        const image = document.createElement('img');
+        image.id = `result-image-${index}-${part}`;
+        var partName = getCorrectPart(part, item.parts);
+        image.setAttribute("src", "bigimg/" + partName + "@8x.png");
+        image.className = 'result-image';
+        imageContainer.appendChild(image);
+      });
+      container.appendChild(imageContainer);
+      container.appendChild(yomiElement);
+      container.appendChild(imiElement);
+      document.getElementById('result-container').appendChild(container);
+    });
+  } catch (error) {
+    console.error("Error fetching or parsing data.json", error);
   }
 }

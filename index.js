@@ -19,9 +19,12 @@ app.use(cors(corsOptions));
 // 静的ファイルの提供
 app.use(express.static('public'));
 
-// ルートパスにアクセスされた場合、index.htmlを返す
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+  res.sendFile(path.join(__dirname, 'public', 'home.html'));
+});
+
+app.get('/search/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'search.html'));
 });
 
 function findMatchingObjects(data, parts) {
@@ -31,7 +34,7 @@ function findMatchingObjects(data, parts) {
 }
 
 // 検索機能
-app.get('/search/:parts', (req, res) => {
+app.get('/search/parts/:parts', (req, res) => {
   const parts = req.params.parts.split('-');
   const filename = path.join(__dirname, 'data.json')
 
@@ -53,6 +56,18 @@ app.get('/search/:parts', (req, res) => {
   })
 })
 
+app.get('/data', (req, res) => {
+  const filename = path.join(__dirname, 'data.json');
+
+  fs.readFile(filename, "utf8", (err, jsonString) => {
+    if (err) {
+      console.log("Error reading file", err);
+      res.status(500).send('Error reading file');
+      return;
+    }
+    res.json(JSON.parse(jsonString));
+  });
+});
 
 // サーバーを起動
 app.listen(port, () => {

@@ -22,7 +22,13 @@
     <div class="container">
       <h2 class="center">シャリタツ語<wbr>文字検索</h2>
     </div>
-    <div class="container">
+    <div class="radio-container">
+      <input type="radio" id="syari-radio" name="search-type" onclick="switchSearchType()" checked>
+      <label for="syari-radio">シャリタツ文字</label>　
+      <input type="radio" id="japanese-radio" name="search-type" onclick="switchSearchType()">
+      <label for="japanese-radio">日本語</label>
+    </div>
+    <div class="container" id="syari">
       <div class="box" id="target">
         <img src="bigimg/s@8x.png" id="image1" class="image">
         <img src="bigimg/ms@8x.png" id="image2" class="image">
@@ -53,7 +59,10 @@
         <img src="img/l.png" alt="のり" class="sbox" id="btn12">
       </div>
     </div>
-    <div class="container">
+    <div class="container" id="japanese" style="display: none;">
+      <input type="text" id="japanese-input" placeholder="読みを入力してください">
+    </div>
+    <div class="container" >
       <button class="search-button" onclick="search()">検索！</button>
       <a href="" id="ss" download="syari.png">画像をダウンロードする</a>
     </div>

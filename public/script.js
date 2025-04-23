@@ -32,7 +32,6 @@ function onoff(
   colorBlock = "#CCCCDD",
   colorNone = "#EEEEFF",
 ) {
-  // elementをdisplay:noneにするかdisplay:blockにする関数
   if (doCheck == true) {
     // 選択式
     for (let i = 0; i < checkElements.length; i++) {
@@ -185,4 +184,14 @@ function adjustElementSize() {
 window.addEventListener("resize", adjustElementSize);
 adjustElementSize();
 
-
+function switchSearchType() {
+  const syariRadio = document.getElementById("syari-radio");
+  const japaneseRadio = document.getElementById("japanese-radio");
+  if (syariRadio.checked) {
+    document.getElementById("syari").style.display = "grid"; // Show syari
+    document.getElementById("japanese").style.display = "none"; // Hide japanese
+  } else if (japaneseRadio.checked) {
+    document.getElementById("syari").style.display = "none"; // Hide syari
+    document.getElementById("japanese").style.display = "grid"; // Show japanese
+  }
+}
