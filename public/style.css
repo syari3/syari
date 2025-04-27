@@ -140,7 +140,11 @@ a {
 }
 
 .radio {
+  margin: 20px;
+}
 
+#reading-input {
+  margin: 20px;
 }
 
 #japanese-input {

@@ -54,9 +54,12 @@ function getCorrectPart(part, parts) {
 
 function search() {
   const syariRadio = document.getElementById("syari-radio");
+  const readingRadio = document.getElementById("reading-radio");
   const japaneseRadio = document.getElementById("japanese-radio");
   if (syariRadio.checked) {
     searchParts();
+  } else if (readingRadio.checked) {
+    searchReading();
   } else if (japaneseRadio.checked) {
     searchJapanese();
   }
@@ -130,8 +133,8 @@ async function searchParts() {
   }
 }
 
-async function searchJapanese() {
-  const inputValue = document.getElementById("japanese-input").value.trim();
+async function searchReading() {
+  const inputValue = document.getElementById("reading-input").value.trim();
   const filename = '/data'; // エンドポイントを更新
 
   try {
@@ -146,6 +149,68 @@ async function searchJapanese() {
     const results = Object.entries(jsonData).filter(([key, value]) => value.yomi.includes(inputValue));
     // Sort results by length of 'yomi'
     results.sort((a, b) => a[1].yomi.length - b[1].yomi.length);
+
+    if(results.length > 0) {
+      dialog(`${results.length}個のデータが見つかりました。`)
+    } else {
+      dialog("該当するデータは見つかりませんでした。")
+    }
+
+    // Clear existing content
+    document.getElementById('result-container').innerHTML = '';
+    const resultMessage = document.createElement('div');
+    if (results.length > 0) {
+      resultMessage.textContent= `${results.length}個のデータが見つかりました。`
+    } else {
+      resultMessage.textContent= `該当するデータは見つかりませんでした。`
+    }
+    document.getElementById('result-container').appendChild(resultMessage);
+
+    // Create HTML elements for each item in the results
+    results.forEach(([key, item], index) => {
+      const container = document.createElement('div');
+      container.className = 'item-container container';
+      const yomiElement = document.createElement('span');
+      yomiElement.textContent = `読み方: ${item.yomi}`;
+      const imiElement = document.createElement('span');
+      imiElement.textContent = `意味: ${item.imi}`;
+
+      const imageContainer = document.createElement('div');
+      imageContainer.className = 'image-container';
+      item.parts.forEach(part => {
+        const image = document.createElement('img');
+        image.id = `result-image-${index}-${part}`;
+        var partName = getCorrectPart(part, item.parts);
+        image.setAttribute("src", "bigimg/" + partName + "@8x.png");
+        image.className = 'result-image';
+        imageContainer.appendChild(image);
+      });
+      container.appendChild(imageContainer);
+      container.appendChild(yomiElement);
+      container.appendChild(imiElement);
+      document.getElementById('result-container').appendChild(container);
+    });
+  } catch (error) {
+    console.error("Error fetching or parsing data.json", error);
+  }
+}
+
+async function searchJapanese() {
+  const inputValue = document.getElementById("japanese-input").value.trim();
+  const filename = '/data'; // エンドポイントを更新
+
+  try {
+    const response = await fetch(filename);
+
+    // Check if the response is ok (status in the range 200-299)
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+
+    const jsonData = await response.json();
+    const results = Object.entries(jsonData).filter(([key, value]) => value.imi.includes(inputValue));
+    // Sort results by length of 'yomi'
+    results.sort((a, b) => a[1].imi.length - b[1].imi.length);
 
     if(results.length > 0) {
       dialog(`${results.length}個のデータが見つかりました。`)

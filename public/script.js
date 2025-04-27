@@ -186,12 +186,19 @@ adjustElementSize();
 
 function switchSearchType() {
   const syariRadio = document.getElementById("syari-radio");
+  const readingRadio = document.getElementById("reading-radio");
   const japaneseRadio = document.getElementById("japanese-radio");
   if (syariRadio.checked) {
-    document.getElementById("syari").style.display = "grid"; // Show syari
-    document.getElementById("japanese").style.display = "none"; // Hide japanese
+    document.getElementById("syari").style.display = "grid"; 
+    document.getElementById("reading").style.display = "none"; 
+    document.getElementById("japanese").style.display = "none"; 
+  } else if (readingRadio.checked) {
+    document.getElementById("syari").style.display = "none";
+    document.getElementById("reading").style.display = "grid"; 
+    document.getElementById("japanese").style.display = "none"; 
   } else if (japaneseRadio.checked) {
-    document.getElementById("syari").style.display = "none"; // Hide syari
-    document.getElementById("japanese").style.display = "grid"; // Show japanese
+    document.getElementById("syari").style.display = "none";
+    document.getElementById("reading").style.display = "none";
+    document.getElementById("japanese").style.display = "grid";
   }
 }
