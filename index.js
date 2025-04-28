@@ -69,6 +69,34 @@ app.get('/data', (req, res) => {
   });
 });
 
+app.get('/search/word/:id', (req, res) => {
+  const id = req.params.id;
+  const filename = path.join(__dirname, 'data.json');
+
+  fs.readFile(filename, "utf8", (err, jsonString) => {
+    if (err) {
+      console.log("Error reading file", err);
+      res.status(500).send('Error reading file');
+      return;
+    }
+
+    const data = JSON.parse(jsonString);
+    const item = data[id];
+
+    // fullプロパティがokか確認
+    if (item) {
+      res.send(`
+        <h1>${item.yomi}</h1>
+        <p>意味: ${item.imi}</p>
+        <p>詳細情報: ${item.kaisetu || '情報はありません。'}</p>
+        <a href="/search/">戻る</a>
+      `);
+    } else {
+      res.status(404).send('アイテムが見つかりません。');
+    }
+  });
+});
+
 // サーバーを起動
 app.listen(port, () => {
   console.log(`Server running on http://localhost:${port}`);

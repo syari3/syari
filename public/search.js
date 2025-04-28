@@ -68,68 +68,68 @@ function search() {
 async function searchParts() {
   var parts = nowParts().join("-");
   if(parts == []) {
-    dialog("少なくとも一つのパーツを入力してください。")
+    dialog("少なくとも一つのパーツを入力してください。");
     return;
   }
   var url = "https://syari.onrender.com/search/parts/" + parts;
-  console.log(typeof(parts))
-  console.log(url)
+  console.log(typeof(parts));
+  console.log(url);
+
   try {
     const response = await fetch(url);
-
     const data = await response.json();
     console.log(data);
+
     if(data.length > 0) {
-      dialog(`${data.length}個のデータが見つかりました。`)
+      dialog(`${data.length}個のデータが見つかりました。`);
     } else {
-      dialog("該当するデータは見つかりませんでした。")
+      dialog("該当するデータは見つかりませんでした。");
     }
-    
+
     // Clear existing content
     document.getElementById('result-container').innerHTML = '';
-
     var result = document.createElement('div');
     if (data.length > 0) {
-      result.textContent = `${data.length}個のデータが見つかりました。`
+      result.textContent = `${data.length}個のデータが見つかりました。`;
     } else {
-      result.textContent = `該当するデータは見つかりませんでした。`
+      result.textContent = `該当するデータは見つかりませんでした。`;
     }
-
-    id("result-container").appendChild(result)
-    var i = 0;
+    document.getElementById('result-container').appendChild(result);
 
     // Create HTML elements for each item in the data
     data.forEach(item => {
-      i++;
+      const key = item[0]; // Get the key from the item
       const container = document.createElement('div');
       container.className = 'item-container container';
-
       const yomiElement = document.createElement('span');
       yomiElement.textContent = `読み方: ${item[1].yomi}`;
-
       const imiElement = document.createElement('span');
       imiElement.textContent = `意味: ${item[1].imi}`;
-
       const imageContainer = document.createElement('div');
-      imageContainer.className = 'image-container'
+      imageContainer.className = 'image-container';
       item[1].parts.forEach(part => {
         const image = document.createElement('img');
-        image.id = part + i
-        var partName = getCorrectPart(part, item[1].parts)
-        image.setAttribute("src","bigimg/" + partName + "@8x.png")
-        image.className = 'result-image'
+        image.id = part + key; // Use part and key for IDs
+        var partName = getCorrectPart(part, item[1].parts);
+        image.setAttribute("src", "bigimg/" + partName + "@8x.png");
+        image.className = 'result-image';
         imageContainer.appendChild(image);
       });
-
+      // Create clickable link
+      const link = document.createElement('a');
+      link.textContent = "詳細を見る";
+      link.href = `/search/word/${key}`;
+      // fullがokであるか確認
+      if (item[1].full && item[1].full === "ok") {
+        container.appendChild(link);
+      }
       container.appendChild(imageContainer);
       container.appendChild(yomiElement);
       container.appendChild(imiElement);
-
       document.getElementById('result-container').appendChild(container);
-    })
+    });
   } catch (err) {
     console.error("Error parsing JSON string:", err);
-
   }
 }
 
@@ -185,6 +185,17 @@ async function searchReading() {
         image.className = 'result-image';
         imageContainer.appendChild(image);
       });
+
+      // クリック可能なリンク作成
+      const link = document.createElement('a');
+      link.textContent = "詳細を見る";
+      link.href = `/search/word/${key}`;
+
+      // fullがokであるか確認
+      if (item.full && item.full === "ok") {
+        container.appendChild(link);
+      }
+      
       container.appendChild(imageContainer);
       container.appendChild(yomiElement);
       container.appendChild(imiElement);
@@ -247,6 +258,16 @@ async function searchJapanese() {
         image.className = 'result-image';
         imageContainer.appendChild(image);
       });
+      // クリック可能なリンク作成
+      const link = document.createElement('a');
+      link.textContent = "詳細を見る";
+      link.href = `/search/word/${key}`;
+
+      // fullがokであるか確認
+      if (item.full && item.full === "ok") {
+        container.appendChild(link);
+      }
+      
       container.appendChild(imageContainer);
       container.appendChild(yomiElement);
       container.appendChild(imiElement);
