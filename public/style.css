@@ -1,10 +1,18 @@
+@font-face{
+  font-family: "honokadaze";
+  src: url("/fonts/honoka.otf")format("opentype");
+  font-display:swap;
+}
+
 body {
-  background: radial-gradient(circle, #EEEEFF, #EEFFFF)
+  font-family: "honokadaze";
+  background: radial-gradient(circle, #EEEEFF, #EEFFFF);
 }
 
 h2 {
   word-break: keep-all;
   overflow-wrap: anywhere; 
+  font-family: "honokadaze";
 }
 
 a {
@@ -22,7 +30,7 @@ a {
   justify-content: center;
   align-items: center;
   z-index: 10;
-  opacity:0
+  opacity:0;
 }
 
 #dialog {
@@ -48,7 +56,7 @@ a {
 }
 
 #dialog-btn:hover {
-  background: radial-gradient(circle, rgba(220, 220, 255, 50), rgba(224, 220, 255, 50))
+  background: radial-gradient(circle, rgba(220, 220, 255, 50), rgba(224, 220, 255, 50));
 }
 
 .container {
@@ -78,7 +86,7 @@ a {
 }
 
 .sbox:hover {
-  background: radial-gradient(circle, rgba(220, 220, 255, 50), rgba(224, 220, 255, 50))
+  background: radial-gradient(circle, rgba(220, 220, 255, 50), rgba(224, 220, 255, 50));
 }
 
 .search-button{
@@ -108,7 +116,7 @@ a {
 
 .image {
   position: absolute;
-  display: none
+  display: none;
 }
 
 .item-container {
