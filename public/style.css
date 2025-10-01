@@ -1,6 +1,6 @@
 @font-face{
   font-family: "honokadaze";
-  src: url("/fonts/honoka.otf")format("opentype");
+  src: url("/fonts/honoka.ttf") format("truetype");
   font-display:swap;
 }
 
