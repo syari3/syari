@@ -104,6 +104,7 @@ a {
   text-decoration: none;
   transition: .2s ease-in-out;
   border: none;
+  font-family: "honokadaze";
 }
 .search-button:hover {
   top: 2px; /* 元の位置から2px分下げる */
