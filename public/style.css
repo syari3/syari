@@ -379,3 +379,24 @@ a:hover {
 #japanese-input::placeholder {
   color: #81D4FA;
 }
+
+.update-history-box {
+  margin: 30px auto;
+  padding: 25px 30px;
+  max-width: min(600px, 90vw);
+  background: linear-gradient(135deg, #FFFFFF 0%, #F0F8FF 100%);
+  border: 2px solid #B3E5FC;
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(3, 169, 244, 0.15);
+  transition: all 0.3s ease;
+  animation: scaleIn 0.6s ease-out;
+}
+
+.update-history-box:hover {
+  box-shadow: 0 12px 30px rgba(3, 169, 244, 0.25);
+}
+
+.update-history-box h2,
+.update-history-box h3 {
+  margin: 0.5rem 0;
+}
