@@ -400,3 +400,7 @@ a:hover {
 .update-history-box h3 {
   margin: 0.5rem 0;
 }
+
+.update-history-box h3 {
+  text-align: left;
+}
