@@ -224,6 +224,13 @@ a:hover {
   box-shadow: 0 1px 4px rgba(3, 169, 244, 0.15);
 }
 
+.sbox.selected {
+  background: linear-gradient(135deg, #FFE082 0%, #FFB300 100%) !important;
+  border-color: #FFA000 !important;
+  box-shadow: 0 4px 12px rgba(255, 179, 0, 0.4) !important;
+  transform: scale(1.05) !important;
+}
+
 .search-button{
   width: 256px;
   position: relative;

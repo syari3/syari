@@ -111,7 +111,7 @@ async function searchParts() {
         const image = document.createElement('img');
         image.id = part + key; // Use part and key for IDs
         var partName = getCorrectPart(part, item[1].parts);
-        image.setAttribute("src", "bigimg/" + partName + "@8x.png");
+        image.setAttribute("src", "/bigimg/" + partName + "@8x.png");
         image.className = 'result-image';
         imageContainer.appendChild(image);
       });
@@ -181,7 +181,7 @@ async function searchReading() {
         const image = document.createElement('img');
         image.id = `result-image-${index}-${part}`;
         var partName = getCorrectPart(part, item.parts);
-        image.setAttribute("src", "bigimg/" + partName + "@8x.png");
+        image.setAttribute("src", "/bigimg/" + partName + "@8x.png");
         image.className = 'result-image';
         imageContainer.appendChild(image);
       });
@@ -254,7 +254,7 @@ async function searchJapanese() {
         const image = document.createElement('img');
         image.id = `result-image-${index}-${part}`;
         var partName = getCorrectPart(part, item.parts);
-        image.setAttribute("src", "bigimg/" + partName + "@8x.png");
+        image.setAttribute("src", "/bigimg/" + partName + "@8x.png");
         image.className = 'result-image';
         imageContainer.appendChild(image);
       });

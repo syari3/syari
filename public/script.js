@@ -37,17 +37,17 @@ function onoff(
     for (let i = 0; i < checkElements.length; i++) {
       if (checkElements[i].style.display == "block") {
         checkElements[i].style.display = "none";
-        checkColorElements[i].style.backgroundColor = colorNone;
+        checkColorElements[i].classList.remove("selected");
       }
     }
   }
 
   if (element.style.display == "block") {
     element.style.display = "none";
-    colorElement.style.backgroundColor = colorNone;
+    colorElement.classList.remove("selected");
   } else {
     element.style.display = "block";
-    colorElement.style.backgroundColor = colorBlock;
+    colorElement.classList.add("selected");
   }
 
   ifChange();
@@ -61,12 +61,12 @@ function changeImage(changeTable) {
 
   for (var i = 1; i < imgs.length - 1; i++) {
     if (isBlock(id(imgs[i]))) {
-      changeImg.src = `bigimg/${changeTable[imgs[i]]}@8x.png`;
-      return `bigimg/${changeTable[imgs[i]]}@8x.png`;
+      changeImg.src = `/bigimg/${changeTable[imgs[i]]}@8x.png`;
+      return `/bigimg/${changeTable[imgs[i]]}@8x.png`;
     }
   }
 
-  changeImg.src = `bigimg/${changeTable[imgs[imgs.length - 1]]}@8x.png`;
+  changeImg.src = `/bigimg/${changeTable[imgs[imgs.length - 1]]}@8x.png`;
 }
 function ifChange() {
   changeImage(oChangeTable);
