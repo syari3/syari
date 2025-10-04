@@ -23,6 +23,14 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'home.html'));
 });
 
+app.get('/syaritatu', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'syaritatu.html'));
+});
+
+app.get('/kapu', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'kapu.html'));
+});
+
 app.get('/search/', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'search.html'));
 });
