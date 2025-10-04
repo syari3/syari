@@ -2,7 +2,7 @@
 
 ## Overview
 
-This is a web-based dictionary application for two constructed languages: "Syari-tatsu-go" (シャリタツ語) and "Kapu-go" (カプ語). The application provides search functionality for language learners to look up words by character composition, reading, or Japanese meaning. It's built as a simple Express.js server that serves static HTML pages with client-side JavaScript for search functionality.
+This is a web-based dictionary application for two constructed languages: "Syari-tatsu-go" (シャリタツ語) and "Kapu-go" (カプ語). The application provides search functionality for language learners to look up words by character composition, reading, or Japanese meaning. Additionally, it includes a materials viewer for displaying study notes and reference images. It's built as a simple Express.js server that serves static HTML pages with client-side JavaScript for search functionality.
 
 ## User Preferences
 
@@ -15,7 +15,7 @@ Preferred communication style: Simple, everyday language.
 **Static HTML Pages Pattern**
 - The application uses traditional multi-page architecture with separate HTML files for each route
 - Rationale: Simple deployment, no build process required, SEO-friendly
-- Pages: home.html, syari.html, syari-search.html, kap.html, kap-search.html
+- Pages: home.html, syari.html, syari-search.html, kap.html, kap-search.html, kap-docs.html
 - Each page includes its own inline or linked JavaScript for interactivity
 
 **Client-Side Search Logic**
@@ -30,6 +30,14 @@ Preferred communication style: Simple, everyday language.
 - Parts tracked in arrays and used to filter dictionary entries
 - Custom font files for displaying constructed language characters (kap-original.ttf)
 
+**Materials Viewer System** (Added 2025-10-04)
+- Dedicated page for viewing study materials and reference notes (kap-docs.html)
+- Sidebar + Main area layout with category filtering
+- Grid display of material cards with thumbnails
+- Modal overlay for full-size image viewing
+- Lazy loading for optimized performance
+- JSON-based material metadata (kap-materials.json)
+
 ### Backend Architecture
 
 **Express.js Static File Server**
@@ -40,12 +48,12 @@ Preferred communication style: Simple, everyday language.
 
 **Route Structure**
 - Simple route-to-file mapping without MVC framework
-- Routes: /, /syari, /kap, /kap/search, /syari/search
+- Routes: /, /syari, /kap, /kap/search, /kap/docs, /syari/search
 - Each route serves corresponding HTML file
 - Incomplete search endpoint at `/search/parts/:parts` (backend search feature appears partially implemented)
 
 **Data Storage Strategy**
-- JSON files as primary data store (data.json, full.json, kap-data.json)
+- JSON files as primary data store (data.json, full.json, kap-data.json, kap-materials.json)
 - No database used - data stored in flat files
 - Rationale: Small dataset size, read-only access pattern, simple deployment
 - Tradeoff: Not scalable for large datasets, no real-time updates, but sufficient for dictionary use case
@@ -73,6 +81,7 @@ Preferred communication style: Simple, everyday language.
 ### Static Assets
 - Custom font files: honoka-maru.ttf (Japanese font), kap-original.ttf (constructed language font)
 - Image assets for language characters stored in /bigimg/ and /img/ directories
+- Study materials and notes stored in /img/notes/ directory
 - Favicon for browser tab display
 
 ### External Services
@@ -85,3 +94,4 @@ Preferred communication style: Simple, everyday language.
 Dictionary entries follow structured JSON format:
 - **Syari language**: word key, yomi (reading), imi (meaning), parts (character components), optional fields (gogen/etymology, kaisetu/explanation, reibun/examples)
 - **Kap language**: reading, meaning, etymology, examples (kapu/japanese pairs), notes
+- **Materials metadata** (kap-materials.json): id, title, image path, category, description, date
