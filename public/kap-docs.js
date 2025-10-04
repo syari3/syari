@@ -4,12 +4,17 @@ let selectedCategory = 'すべて';
 async function loadMaterials() {
   try {
     const response = await fetch('/kap-materials.json');
+    if (!response.ok) {
+      throw new Error('資料データの読み込みに失敗しました');
+    }
     materialsData = await response.json();
     
     displayCategories();
     displayMaterials();
   } catch (error) {
     console.error('資料の読み込みエラー:', error);
+    const materialsGrid = document.getElementById('materials-grid');
+    materialsGrid.innerHTML = '<p class="no-results">資料データの読み込みに失敗しました。ページを再読み込みしてください。</p>';
   }
 }
 
@@ -95,6 +100,11 @@ function displayMaterials() {
 }
 
 function openModal(imageSrc) {
+  if (!imageSrc) {
+    console.error('画像のパスが指定されていません');
+    return;
+  }
+  
   const modal = document.getElementById('modal-overlay');
   const modalImage = document.getElementById('modal-image');
   
