@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <title>⁂しゃりー⁂ my page - カプ語資料</title>
+    <meta
+      name="description"
+      content="⁂しゃりー⁂の個人サイトです。カプ語の資料を閲覧できます。"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="/style.css" />
+    <link rel="stylesheet" href="/kap-docs.css" />
+  </head>
+  <body>
+    <div id="modal-overlay" class="modal-overlay">
+      <div class="modal-content">
+        <button class="modal-close" id="modal-close">&times;</button>
+        <img id="modal-image" src="" alt="資料画像">
+      </div>
+    </div>
+
+    <div class="docs-container">
+      <aside class="sidebar">
+        <h2 class="sidebar-title">カテゴリ</h2>
+        <div id="category-list" class="category-list">
+        </div>
+        <button class="back-button" onclick="window.location.href='/kap'">カプ語ページに戻る</button>
+      </aside>
+
+      <main class="main-area">
+        <div class="header">
+          <h1 class="center">カプ語資料</h1>
+        </div>
+        
+        <div id="materials-grid" class="materials-grid">
+        </div>
+      </main>
+    </div>
+
+    <script src="/kap-docs.js"></script>
+  </body>
+</html>
