@@ -31,8 +31,12 @@ app.get('/kap', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'kap.html'));
 });
 
-app.get('/search/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'search.html'));
+app.get('/kap/search', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'kap-search.html'));
+});
+
+app.get('/syari/search/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'syari-search.html'));
 });
 
 function findMatchingObjects(data, parts) {

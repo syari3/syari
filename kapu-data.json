@@ -1,0 +1,30 @@
+{
+  "alola": {
+    "reading": "ア(ロー)↑ラ",
+    "meaning": "こんにちは",
+    "etymology": "・ポケモンSM アローラ地方のあいさつ「アローラ」より",
+    "examples": [
+      {
+        "kapu": "alola e siali!",
+        "japanese": "こんにちは、しゃりー!"
+      },
+      {
+        "kapu": "e malil si, alola!",
+        "japanese": "マリルさん、こんにちは！"
+      }
+    ],
+    "notes": "・基本的にいつでも使えるが、昼に使うことが多い。"
+  },
+  "kap": {
+    "reading": "カp",
+    "meaning": "私",
+    "etymology": "・ポケモン名 カプ・コケコなどから",
+    "examples": [
+      {
+        "kapu": "kipos gu kap ga siali",
+        "japanese": "私はしゃりーです。"
+      }
+    ],
+    "notes": "特になし"
+  }
+}
