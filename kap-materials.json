@@ -2,10 +2,10 @@
   "materials": [
     {
       "id": 1,
-      "title": "カプ語資料 2025/08/12",
-      "image": "/img/notes/IMG_20250812_0001-1.png",
+      "title": "kap語基礎① 文字",
+      "image": "/img/notes/kap-moji.png",
       "category": "基礎",
-      "description": "カプ語の基本資料",
+      "description": "kap語の文字、全16字をまとめました。",
       "date": "2025-08-12"
     }
   ],
