@@ -5,10 +5,37 @@
     <title>⁂しゃりー⁂ my page - カプ語検索</title>
     <meta
       name="description"
-      content="⁂しゃりー⁂の個人サイトです。カプ語の検索をします。"
+      content="⁂しゃりー⁂の個人サイトです。カプ語の解説をしています。"
     />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="google-site-verification" content="GBx347Vks6RMKjQ1H2ZbCWXniUB-TbQjPo4PqUCM1qc" />
     <link rel="icon" href="/img/favicon.ico">
     <link rel="stylesheet" href="/style.css" />
-  
+  </head>
+  <body>
+    <div id="dialog-cover">
+      <div id="dialog">
+        <p id="message"></p>
+        <button id="dialog-btn">閉じる</button>
+      </div>
+    </div>
+    <div class="container">
+      <h2 class="center">カプ語検索</h2>
+    </div>
+    <div class="radio-container">
+      <div class="radio-option">
+        <input type="radio" id="kapu-word-radio" name="search-type" onclick="switchKapuSearch
+    <div class="container" id="japanese" style="display: none;">
+      <input type="text" id="japanese-input" placeholder="日本語を入力してください">
+    </div>
+    <div class="container" >
+      <button class="search-button" onclick="search()">検索！</button>
+      <a href="" id="ss" download="syari.png">画像をダウンロードする</a>
+    </div>
+    <br>
+    <div id="result-container" class ="container"></div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.js"></script>
+    <script src="script.js"></script>
+    <script src="search.js"></script>
+  </body>
+</html>
