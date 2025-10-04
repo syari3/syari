@@ -81,6 +81,19 @@ app.get('/data', (req, res) => {
   });
 });
 
+app.get('/kap-data.json', (req, res) => {
+  const filename = path.join(__dirname, 'kap-data.json');
+
+  fs.readFile(filename, "utf8", (err, jsonString) => {
+    if (err) {
+      console.log("Error reading kap-data.json", err);
+      res.status(500).send('Error reading file');
+      return;
+    }
+    res.json(JSON.parse(jsonString));
+  });
+});
+
 app.get('/search/word/:id', (req, res) => {
   const id = req.params.id;
   const filename = path.join(__dirname, 'data.json');
