@@ -5,11 +5,21 @@
     <title>カプ語検索</title>
     <meta
       name="description"
-      content="カプ語の検索ページです。"
+      content="kap語の検索ページです。"
     />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" href="/img/favicon.ico">
     <link rel="stylesheet" href="/style.css" />
+    <style>
+      #result-container h3 {
+        font-size: clamp(1.5rem, 4vw, 2rem);
+      }
+      
+      #reading-input,
+      #japanese-input {
+        font-size: clamp(1.1rem, 3vw, 1.4rem);
+      }
+    </style>
   </head>
   <body>
     <div id="dialog-cover">
@@ -19,27 +29,20 @@
       </div>
     </div>
     <div class="container">
-      <h2 class="center">カプ語検索</h2>
+      <h2 class="center">kap語検索</h2>
     </div>
     <div class="radio-container">
-      <div id="search-type1">
-        <input type="radio" id="kapu-alpha-radio" name="search-type" onclick="switchSearchType()" checked>
-        <label for="kapu-alpha-radio">カプ語（アルファベット）</label>　
-      </div>
       <div id="search-type2">
         <input type="radio" id="reading-radio" name="search-type" onclick="switchSearchType()">
-        <label for="reading-radio">読み</label>　
+        <label for="reading-radio">kap語</label>　
       </div>
       <div id="search-type3">
         <input type="radio" id="japanese-radio" name="search-type" onclick="switchSearchType()">
         <label for="japanese-radio">日本語</label>
       </div>
     </div>
-    <div class="container" id="kapu-alpha">
-      <input type="text" id="kapu-alpha-input" placeholder="カプ語のアルファベットを入力してください（例：alola）">
-    </div>
     <div class="container" id="reading" style="display: none;">
-      <input type="text" id="reading-input" placeholder="読みを入力してください">
+      <input type="text" id="reading-input" placeholder="kap語を入力してください">
     </div>
     <div class="container" id="japanese" style="display: none;">
       <input type="text" id="japanese-input" placeholder="日本語を入力してください">
