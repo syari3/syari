@@ -16,13 +16,89 @@
     "notes": "・基本的にいつでも使えるが、昼に使うことが多い。"
   },
   "kap": {
-    "reading": "カプ",
+    "reading": "(カ)↑プ",
     "meaning": "私",
     "etymology": "・ポケモン名 カプ・コケコなどから",
     "examples": [
       {
-        "kapu": "kipos gu kap ga siali",
+        "kapu": "kipos gu kap ga siali.",
         "japanese": "私はしゃりーです。"
+      }
+    ],
+    "notes": "特になし"
+  },
+  "imalo": {
+    "reading": "イ(マー)↑ロ",
+    "meaning": "さようなら",
+    "etymology": "・音象徴「悲しい」から",
+    "examples": [
+      {
+        "kapu": "imalo e siali.",
+        "japanese": "さようなら、しゃりー。"
+      }
+    ],
+    "notes": "特になし"
+  },
+  "e": {
+    "reading": "エ",
+    "meaning": "[e ~で] ~へ、~に向けて",
+    "etymology": "・ハワイ語「e」より",
+    "examples": [
+      {
+        "kapu": "neban gu kap ga nialo e siali.",
+        "japanese": "私はしゃりーにおはようと言う。"
+      },
+      {
+        "kapu": "e malil si, alola!",
+        "japanese": "マリルさん、こんにちは！"
+      }
+    ],
+    "notes": "alola e siali! などのように、eの後に名詞が続く。<br>あいさつなど、一部の状況では文頭にeを付けることができる。"
+  },
+  "si": {
+    "reading": "(シ)↓",
+    "meaning": "[~ siで] ~さん",
+    "etymology": "・日本語「~氏」より<br>・韓国語「~씨」より",
+    "examples": [
+      {
+        "kapu": "e malil si, alola!",
+        "japanese": "マリルさん、こんにちは！"
+      }
+    ],
+    "notes": "siの前には通常、人の名前が来る。"
+  },
+  "nialo": {
+    "reading": "(ニャー)↑ロ",
+    "meaning": "おはよう(起きた時)",
+    "etymology": "・音象徴「猫の鳴き声」から<br>・朝、猫が飼い主を起こしにくることから",
+    "examples": [
+      {
+        "kapu": "neban gu kap ga nialo e siali.",
+        "japanese": "私はしゃりーにおはようと言う。"
+      }
+    ],
+    "notes": "街中などで、朝に挨拶をするときはohukを使う。<br>nialoは、おやすみの対義語として考えるとよい。"
+  },
+  "mioat": {
+    "reading": "(ミョー)↑アッ",
+    "meaning": "おやすみ",
+    "etymology": "・音象徴「やわらかい」から<br>・ふかふかのベッドで寝ることから",
+    "examples": [
+      {
+        "kapu": "neban gu kiopa ga mioat。",
+        "japanese": "守り神はおやすみと言う。"
+      }
+    ],
+    "notes": "特になし"
+  },
+  "": {
+    "reading": "",
+    "meaning": "",
+    "etymology": "",
+    "examples": [
+      {
+        "kapu": "",
+        "japanese": ""
       }
     ],
     "notes": "特になし"
