@@ -35,6 +35,10 @@ app.get('/kap/search', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'kap-search.html'));
 });
 
+app.get('/kap/docs', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'kap-docs.html'));
+});
+
 app.get('/syari/search/', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'syari-search.html'));
 });
@@ -87,6 +91,19 @@ app.get('/kap-data.json', (req, res) => {
   fs.readFile(filename, "utf8", (err, jsonString) => {
     if (err) {
       console.log("Error reading kap-data.json", err);
+      res.status(500).send('Error reading file');
+      return;
+    }
+    res.json(JSON.parse(jsonString));
+  });
+});
+
+app.get('/kap-materials.json', (req, res) => {
+  const filename = path.join(__dirname, 'kap-materials.json');
+
+  fs.readFile(filename, "utf8", (err, jsonString) => {
+    if (err) {
+      console.log("Error reading kap-materials.json", err);
       res.status(500).send('Error reading file');
       return;
     }
