@@ -22,6 +22,163 @@ function searchKap() {
   }
 }
 
+function displayResults(results) {
+  const resultContainer = document.getElementById('result-container');
+  resultContainer.innerHTML = '';
+  
+  const resultMessage = document.createElement('div');
+  if (results.length > 0) {
+    resultMessage.textContent = `${results.length}個のデータが見つかりました。`;
+    resultMessage.style.marginBottom = '15px';
+    resultMessage.style.color = '#666';
+  } else {
+    resultMessage.textContent = '該当するデータは見つかりませんでした。';
+  }
+  resultContainer.appendChild(resultMessage);
+
+  results.forEach(([key, item]) => {
+    const resultItem = document.createElement('div');
+    resultItem.className = 'result-item';
+    resultItem.dataset.key = key;
+    resultItem.dataset.item = JSON.stringify(item);
+    
+    const wordElement = document.createElement('div');
+    wordElement.className = 'result-word';
+    wordElement.textContent = key;
+    
+    const meaningElement = document.createElement('div');
+    meaningElement.className = 'result-meaning';
+    meaningElement.textContent = item?.meaning || '（意味なし）';
+    
+    resultItem.appendChild(wordElement);
+    resultItem.appendChild(meaningElement);
+    
+    resultItem.addEventListener('click', () => {
+      document.querySelectorAll('.result-item').forEach(el => el.classList.remove('selected'));
+      resultItem.classList.add('selected');
+      showDetail(key, item);
+    });
+    
+    resultContainer.appendChild(resultItem);
+  });
+}
+
+function showDetail(key, item) {
+  const detailPanel = document.getElementById('detail-panel');
+  const detailContent = document.getElementById('detail-content');
+  const resultContainer = document.getElementById('result-container');
+  
+  detailContent.innerHTML = '';
+  
+  const wordTitle = document.createElement('div');
+  wordTitle.className = 'detail-word';
+  wordTitle.textContent = key;
+  wordTitle.title = 'クリックでコピー';
+  wordTitle.addEventListener('click', () => copyToClipboard(key));
+  detailContent.appendChild(wordTitle);
+  
+  const table = document.createElement('table');
+  table.className = 'detail-table';
+  
+  if (item?.reading) {
+    const row = document.createElement('tr');
+    row.innerHTML = `<td>読み方</td><td>${item.reading}</td>`;
+    table.appendChild(row);
+  }
+  
+  if (item?.meaning) {
+    const row = document.createElement('tr');
+    row.innerHTML = `<td>意味</td><td>${item.meaning}</td>`;
+    table.appendChild(row);
+  }
+  
+  if (item?.etymology) {
+    const row = document.createElement('tr');
+    row.innerHTML = `<td>語源</td><td>${item.etymology}</td>`;
+    table.appendChild(row);
+  }
+  
+  if (item?.notes) {
+    const row = document.createElement('tr');
+    row.innerHTML = `<td>備考</td><td>${item.notes}</td>`;
+    table.appendChild(row);
+  }
+  
+  if (item?.examples && item.examples.length > 0) {
+    const row = document.createElement('tr');
+    const cell = document.createElement('td');
+    cell.textContent = '例文';
+    const examplesCell = document.createElement('td');
+    
+    item.examples.forEach((example, index) => {
+      const exampleItem = document.createElement('div');
+      exampleItem.className = 'example-item';
+      
+      const kapuText = document.createElement('div');
+      kapuText.className = 'example-kapu';
+      kapuText.textContent = example?.kapu || '';
+      kapuText.style.cursor = 'pointer';
+      kapuText.title = 'クリックで日本語訳を表示';
+      
+      const japaneseText = document.createElement('div');
+      japaneseText.className = 'example-japanese';
+      japaneseText.textContent = example?.japanese || '';
+      
+      kapuText.addEventListener('click', () => {
+        japaneseText.classList.toggle('show');
+      });
+      
+      exampleItem.appendChild(kapuText);
+      exampleItem.appendChild(japaneseText);
+      examplesCell.appendChild(exampleItem);
+    });
+    
+    row.appendChild(cell);
+    row.appendChild(examplesCell);
+    table.appendChild(row);
+  }
+  
+  detailContent.appendChild(table);
+  
+  detailPanel.style.display = 'block';
+  
+  if (window.innerWidth <= 767) {
+    resultContainer.classList.add('hide-mobile');
+  }
+}
+
+function closeDetail() {
+  const detailPanel = document.getElementById('detail-panel');
+  const resultContainer = document.getElementById('result-container');
+  
+  detailPanel.style.display = 'none';
+  resultContainer.classList.remove('hide-mobile');
+  
+  document.querySelectorAll('.result-item').forEach(el => el.classList.remove('selected'));
+}
+
+function copyToClipboard(text) {
+  navigator.clipboard.writeText(text).then(() => {
+    showCopyNotification();
+  }).catch(err => {
+    console.error('コピーに失敗しました:', err);
+  });
+}
+
+function showCopyNotification() {
+  const notification = document.createElement('div');
+  notification.className = 'copy-notification';
+  notification.textContent = 'コピーしました！';
+  document.body.appendChild(notification);
+  
+  setTimeout(() => {
+    notification.style.opacity = '0';
+    setTimeout(() => {
+      document.body.removeChild(notification);
+    }, 300);
+  }, 2000);
+}
+
 async function searchKapReading() {
   const inputValue = document.getElementById("reading-input").value.trim();
   
@@ -41,7 +198,7 @@ async function searchKapReading() {
 
     const jsonData = await response.json();
     const results = Object.entries(jsonData).filter(([key, value]) => 
-      key && key.toLowerCase().includes(inputValue)
+      key && key.toLowerCase().includes(inputValue.toLowerCase())
     );
     results.sort((a, b) => a[0].length - b[0].length);
 
@@ -51,59 +208,8 @@ async function searchKapReading() {
       dialog("該当するデータは見つかりませんでした。")
     }
 
-    document.getElementById('result-container').innerHTML = '';
-    const resultMessage = document.createElement('div');
-    if (results.length > 0) {
-      resultMessage.textContent= `${results.length}個のデータが見つかりました。`
-    } else {
-      resultMessage.textContent= `該当するデータは見つかりませんでした。`
-    }
-    document.getElementById('result-container').appendChild(resultMessage);
-
-    results.forEach(([key, item], index) => {
-      const container = document.createElement('div');
-      container.className = 'item-container container';
-      
-      const keyElement = document.createElement('h3');
-      keyElement.textContent = key;
-      container.appendChild(keyElement);
-      
-      const readingElement = document.createElement('p');
-      readingElement.textContent = `読み方: ${item?.reading || '（なし）'}`;
-      container.appendChild(readingElement);
-      
-      const meaningElement = document.createElement('p');
-      meaningElement.textContent = `意味: ${item?.meaning || '（なし）'}`;
-      container.appendChild(meaningElement);
-      
-      if (item?.etymology) {
-        const etymologyElement = document.createElement('p');
-        etymologyElement.textContent = `語源: ${item.etymology}`;
-        container.appendChild(etymologyElement);
-      }
-      
-      if (item?.examples && item.examples.length > 0) {
-        const examplesTitle = document.createElement('p');
-        examplesTitle.textContent = '例文:';
-        examplesTitle.style.fontWeight = 'bold';
-        container.appendChild(examplesTitle);
-        
-        item.examples.forEach(example => {
-          const exampleDiv = document.createElement('div');
-          exampleDiv.style.marginLeft = '20px';
-          exampleDiv.innerHTML = `<p>カプ語: ${example?.kapu || ''}<br>日本語: ${example?.japanese || ''}</p>`;
-          container.appendChild(exampleDiv);
-        });
-      }
-      
-      if (item?.notes) {
-        const notesElement = document.createElement('p');
-        notesElement.textContent = `備考: ${item.notes}`;
-        container.appendChild(notesElement);
-      }
-      
-      document.getElementById('result-container').appendChild(container);
-    });
+    closeDetail();
+    displayResults(results);
   } catch (error) {
     console.error("Error fetching or parsing kap-data.json", error);
     dialog("データの取得中にエラーが発生しました。");
@@ -139,59 +245,8 @@ async function searchKapJapanese() {
       dialog("該当するデータは見つかりませんでした。")
     }
 
-    document.getElementById('result-container').innerHTML = '';
-    const resultMessage = document.createElement('div');
-    if (results.length > 0) {
-      resultMessage.textContent= `${results.length}個のデータが見つかりました。`
-    } else {
-      resultMessage.textContent= `該当するデータは見つかりませんでした。`
-    }
-    document.getElementById('result-container').appendChild(resultMessage);
-
-    results.forEach(([key, item], index) => {
-      const container = document.createElement('div');
-      container.className = 'item-container container';
-      
-      const keyElement = document.createElement('h3');
-      keyElement.textContent = key;
-      container.appendChild(keyElement);
-      
-      const readingElement = document.createElement('p');
-      readingElement.textContent = `読み方: ${item?.reading || '（なし）'}`;
-      container.appendChild(readingElement);
-      
-      const meaningElement = document.createElement('p');
-      meaningElement.textContent = `意味: ${item?.meaning || '（なし）'}`;
-      container.appendChild(meaningElement);
-      
-      if (item?.etymology) {
-        const etymologyElement = document.createElement('p');
-        etymologyElement.textContent = `語源: ${item.etymology}`;
-        container.appendChild(etymologyElement);
-      }
-      
-      if (item?.examples && item.examples.length > 0) {
-        const examplesTitle = document.createElement('p');
-        examplesTitle.textContent = '例文:';
-        examplesTitle.style.fontWeight = 'bold';
-        container.appendChild(examplesTitle);
-        
-        item.examples.forEach(example => {
-          const exampleDiv = document.createElement('div');
-          exampleDiv.style.marginLeft = '20px';
-          exampleDiv.innerHTML = `<p>カプ語: ${example?.kapu || ''}<br>日本語: ${example?.japanese || ''}</p>`;
-          container.appendChild(exampleDiv);
-        });
-      }
-      
-      if (item?.notes) {
-        const notesElement = document.createElement('p');
-        notesElement.textContent = `備考: ${item.notes}`;
-        container.appendChild(notesElement);
-      }
-      
-      document.getElementById('result-container').appendChild(container);
-    });
+    closeDetail();
+    displayResults(results);
   } catch (error) {
     console.error("Error fetching or parsing kap-data.json", error);
     dialog("データの取得中にエラーが発生しました。");
