@@ -4,7 +4,11 @@ let searchQuery = '';
 let sortOrder = 'new';
 let favorites = [];
 let completed = [];
-let filterMode = 'none';
+let filters = {
+  favorites: false,
+  completed: false,
+  uncompleted: false
+};
 
 function loadFromLocalStorage() {
   const storedFavorites = localStorage.getItem('kap-favorites');
@@ -104,11 +108,13 @@ function displayMaterials() {
     );
   }
   
-  if (filterMode === 'favorites') {
+  if (filters.favorites) {
     filteredMaterials = filteredMaterials.filter(m => favorites.includes(m.id));
-  } else if (filterMode === 'completed') {
+  }
+  
+  if (filters.completed) {
     filteredMaterials = filteredMaterials.filter(m => completed.includes(m.id));
-  } else if (filterMode === 'uncompleted') {
+  } else if (filters.uncompleted) {
     filteredMaterials = filteredMaterials.filter(m => !completed.includes(m.id));
   }
   
