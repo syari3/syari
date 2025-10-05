@@ -107,6 +107,62 @@ body {
   margin-bottom: 30px;
 }
 
+.controls {
+  display: flex;
+  gap: 15px;
+  margin-top: 20px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.search-input {
+  flex: 1;
+  min-width: 200px;
+  padding: 12px 20px;
+  border: 2px solid #BBDEFB;
+  border-radius: 25px;
+  font-size: 1rem;
+  font-family: "kap-original", "kap-alphabet", "honokadaze";
+  transition: all 0.3s ease;
+  background: white;
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: #0277BD;
+  box-shadow: 0 0 0 3px rgba(2, 119, 189, 0.1);
+}
+
+.sort-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.sort-button {
+  padding: 10px 20px;
+  border: 2px solid #BBDEFB;
+  border-radius: 20px;
+  background: white;
+  color: #0277BD;
+  font-size: 0.95rem;
+  font-weight: 500;
+  font-family: "kap-original", "kap-alphabet", "honokadaze";
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.sort-button:hover {
+  background: rgba(227, 242, 253, 0.5);
+  transform: translateY(-2px);
+}
+
+.sort-button.active {
+  background: linear-gradient(135deg, #0277BD, #01579B);
+  color: white;
+  border-color: #0277BD;
+  box-shadow: 0 4px 10px rgba(2, 119, 189, 0.3);
+}
+
 .materials-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -241,5 +297,19 @@ body {
   .modal-close {
     top: 10px;
     right: 10px;
+  }
+  
+  .controls {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .search-input {
+    width: 100%;
+  }
+  
+  .sort-buttons {
+    width: 100%;
+    justify-content: center;
   }
 }
