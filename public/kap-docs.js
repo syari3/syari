@@ -241,40 +241,35 @@ function setupEventListeners() {
   const filterUncompleted = document.getElementById('filter-uncompleted');
   
   filterFavorites.addEventListener('click', () => {
-    if (filterMode === 'favorites') {
-      filterMode = 'none';
-      filterFavorites.classList.remove('active');
-    } else {
-      filterMode = 'favorites';
+    filters.favorites = !filters.favorites;
+    if (filters.favorites) {
       filterFavorites.classList.add('active');
-      filterCompleted.classList.remove('active');
-      filterUncompleted.classList.remove('active');
+    } else {
+      filterFavorites.classList.remove('active');
     }
     displayMaterials();
   });
   
   filterCompleted.addEventListener('click', () => {
-    if (filterMode === 'completed') {
-      filterMode = 'none';
-      filterCompleted.classList.remove('active');
-    } else {
-      filterMode = 'completed';
+    filters.completed = !filters.completed;
+    if (filters.completed) {
       filterCompleted.classList.add('active');
-      filterFavorites.classList.remove('active');
+      filters.uncompleted = false;
       filterUncompleted.classList.remove('active');
+    } else {
+      filterCompleted.classList.remove('active');
     }
     displayMaterials();
   });
   
   filterUncompleted.addEventListener('click', () => {
-    if (filterMode === 'uncompleted') {
-      filterMode = 'none';
-      filterUncompleted.classList.remove('active');
-    } else {
-      filterMode = 'uncompleted';
+    filters.uncompleted = !filters.uncompleted;
+    if (filters.uncompleted) {
       filterUncompleted.classList.add('active');
-      filterFavorites.classList.remove('active');
+      filters.completed = false;
       filterCompleted.classList.remove('active');
+    } else {
+      filterUncompleted.classList.remove('active');
     }
     displayMaterials();
   });
