@@ -1,5 +1,7 @@
 let materialsData = null;
 let selectedCategory = 'すべて';
+let searchQuery = '';
+let sortOrder = 'new';
 
 async function loadMaterials() {
   try {
@@ -11,6 +13,7 @@ async function loadMaterials() {
     
     displayCategories();
     displayMaterials();
+    setupEventListeners();
   } catch (error) {
     console.error('資料の読み込みエラー:', error);
     const materialsGrid = document.getElementById('materials-grid');
@@ -52,9 +55,25 @@ function displayMaterials() {
   const materialsGrid = document.getElementById('materials-grid');
   materialsGrid.innerHTML = '';
   
-  const filteredMaterials = selectedCategory === 'すべて' 
-    ? materialsData.materials 
+  let filteredMaterials = selectedCategory === 'すべて' 
+    ? [...materialsData.materials]
     : materialsData.materials.filter(m => m.category === selectedCategory);
+  
+  if (searchQuery) {
+    const query = searchQuery.toLowerCase();
+    filteredMaterials = filteredMaterials.filter(m => 
+      m.title.toLowerCase().includes(query) || 
+      m.description.toLowerCase().includes(query)
+    );
+  }
+  
+  filteredMaterials.sort((a, b) => {
+    if (sortOrder === 'new') {
+      return b.id - a.id;
+    } else {
+      return a.id - b.id;
+    }
+  });
   
   if (filteredMaterials.length === 0) {
     materialsGrid.innerHTML = '<p class="no-results">該当する資料がありません</p>';
@@ -115,6 +134,31 @@ function openModal(imageSrc) {
 function closeModal() {
   const modal = document.getElementById('modal-overlay');
   modal.classList.remove('active');
+}
+
+function setupEventListeners() {
+  const searchInput = document.getElementById('search-input');
+  searchInput.addEventListener('input', (e) => {
+    searchQuery = e.target.value;
+    displayMaterials();
+  });
+  
+  const sortNewButton = document.getElementById('sort-new');
+  const sortOldButton = document.getElementById('sort-old');
+  
+  sortNewButton.addEventListener('click', () => {
+    sortOrder = 'new';
+    sortNewButton.classList.add('active');
+    sortOldButton.classList.remove('active');
+    displayMaterials();
+  });
+  
+  sortOldButton.addEventListener('click', () => {
+    sortOrder = 'old';
+    sortOldButton.classList.add('active');
+    sortNewButton.classList.remove('active');
+    displayMaterials();
+  });
 }
 
 document.getElementById('modal-close').addEventListener('click', closeModal);
