@@ -2,11 +2,51 @@
   "materials": [
     {
       "id": 1,
-      "title": "kap語基礎① 文字",
+      "title": "文字一覧",
       "image": "/img/notes/kap-moji.png",
       "category": "基礎",
       "description": "kap語の文字、全16字をまとめました。",
-      "date": "2025-08-12"
+      "date": "2025-10-04"
+    },
+    {
+      "id": 2,
+      "title": "kap語基礎①　文字(1)",
+      "image": "/img/notes/kap-moji1.jpg",
+      "category": "基礎",
+      "description": "k,p,aの3文字について学びます。",
+      "date": "2025-10-05"
+    },
+    {
+      "id": 3,
+      "title": "kap語基礎②　文字(2)",
+      "image": "/img/notes/kap-moji2.jpg",
+      "category": "基礎",
+      "description": "l,m,i,oの4文字について学びます。",
+      "date": "2025-10-05"
+    },
+    {
+      "id": 4,
+      "title": "kap語基礎③　文字(3)",
+      "image": "/img/notes/kap-moji3.jpg",
+      "category": "基礎",
+      "description": "h,g,zの3文字について学びます。",
+      "date": "2025-10-05"
+    },
+    {
+      "id": 5,
+      "title": "kap語基礎④　文字(4)",
+      "image": "/img/notes/kap-moji4.jpg",
+      "category": "基礎",
+      "description": "n,s,b,uの4文字について学びます。",
+      "date": "2025-10-05"
+    },
+    {
+      "id": 6,
+      "title": "kap語基礎⑤　文字(5)",
+      "image": "/img/notes/kap-moji5.jpg",
+      "category": "基礎",
+      "description": "t,eの2文字について学びます。文字最終回。",
+      "date": "2025-10-05"
     }
   ],
   "categories": [
