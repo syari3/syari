@@ -42,7 +42,7 @@
   "e": {
     "reading": "エ",
     "meaning": "[e ~で] ~へ、~に向けて",
-    "etymology": "・ハワイ語「e」より",
+    "etymology": "・ハワイ語より",
     "examples": [
       {
         "kapu": "neban gu kap ga nialo e siali.",
@@ -77,7 +77,7 @@
         "japanese": "私はしゃりーにおはようと言う。"
       }
     ],
-    "notes": "街中などで、朝に挨拶をするときはohukを使う。<br>nialoは、おやすみの対義語として考えるとよい。"
+    "notes": "街中などで、朝に挨拶をするときはohukを使う。<br>nialoは、おやすみの朝バージョンとして考えるとよい。"
   },
   "mioat": {
     "reading": "(ミョー)↑アッ",
@@ -85,11 +85,131 @@
     "etymology": "・音象徴「やわらかい」から<br>・ふかふかのベッドで寝ることから",
     "examples": [
       {
-        "kapu": "neban gu kiopa ga mioat。",
+        "kapu": "neban gu kiopa ga mioat.",
         "japanese": "守り神はおやすみと言う。"
       }
     ],
     "notes": "特になし"
+  },
+  "ohuk": {
+    "reading": "(オー)↑フック",
+    "meaning": "おはよう(街中などで)",
+    "etymology": "よくわからない。<br>・日本語「おはよう」から？",
+    "examples": [
+      {
+        "kapu": "kopis gu kap ga ohuk.",
+        "japanese": "私はおはよう(という言葉)が好き。"
+      }
+    ],
+    "notes": "朝目覚めたときには、nialoを使う。<br>ohukは、こんばんはの朝バージョンとして考えるとよい。"
+  },
+  "solk": {
+    "reading": "(ソー)↑ルク",
+    "meaning": "こんばんは",
+    "etymology": "よくわからない。<br>・音象徴「だんだんと」から？<br>・月が昇る様子から？",
+    "examples": [
+      {
+        "kapu": "gan gu kap zank biopet ga solk",
+        "japanese": "私はこんばんはと聞くと悲しくなる。"
+      }
+    ],
+    "notes": "特になし"
+  },
+  "zolia": {
+    "reading": "(ゾー)↑リャ",
+    "meaning": "失礼します、すみません",
+    "etymology": "・なんとなく？",
+    "examples": [
+      {
+        "kapu": "e siali si, zolia.",
+        "japanese": "しゃりーさん、すみません。"
+      }
+    ],
+    "notes": "特になし"
+  },
+  "malalo": {
+    "reading": "マ(ラー)↑ロ",
+    "meaning": "ありがとう",
+    "etymology": "・ハワイ語「mahalo」より",
+    "examples": [
+      {
+        "kapu": "malalo e kiopa.",
+        "japanese": "ありがとう、守り神よ。"
+      }
+    ],
+    "notes": "特になし"
+  },
+  "kalam": {
+    "reading": "カーラム",
+    "meaning": "ごめんなさい",
+    "etymology": "・なんとなく？",
+    "examples": [
+      {
+        "kapu": "ma, kalam.",
+        "japanese": "うーん、ごめん。"
+      }
+    ],
+    "notes": "特になし"
+  },
+  "siuba": {
+    "reading": "(シュバー)↑",
+    "meaning": "すごい",
+    "etymology": "・日本語「すばらしい」から",
+    "examples": [
+      {
+        "kapu": "mu, e leh, siuba.",
+        "japanese": "いや、あなたはすごい。"
+      }
+    ],
+    "notes": "感動詞としての使い方。<br>日本語の「すごい量」などのすごいとは違う。"
+  },
+  "ne": {
+    "reading": "ネ",
+    "meaning": "はい、うん",
+    "etymology": "・韓国語「네」から",
+    "examples": [
+      {
+        "kapu": "ne, siabuz",
+        "japanese": "はい、元気です。"
+      }
+    ],
+    "notes": "naと混同しないように注意。"
+  },
+  "mu": {
+    "reading": "ム",
+    "meaning": "いいえ、いや",
+    "etymology": "・日本語「無」から",
+    "examples": [
+      {
+        "kapu": "mu, e leh, siuba.",
+        "japanese": "いや、あなたはすごい。"
+      }
+    ],
+    "notes": "maと混同しないように注意。"
+  },
+  "na": {
+    "reading": "ナ",
+    "meaning": "いいね",
+    "etymology": "・kap語「ne」(はい)から。",
+    "examples": [
+      {
+        "kapu": "na, sa gu kap!",
+        "japanese": "いいね、私、やる！"
+      }
+    ],
+    "notes": "neと混同しないように注意。"
+  },
+  "ma": {
+    "reading": "マ",
+    "meaning": "うーん",
+    "etymology": "・kap語「ma」(いいえ)から",
+    "examples": [
+      {
+        "kapu": "ma, kalam.",
+        "japanese": "うーん、ごめん。"
+      }
+    ],
+    "notes": "muより弱い否定である。"
   },
   "": {
     "reading": "",
