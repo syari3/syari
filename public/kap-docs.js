@@ -108,6 +108,8 @@ function displayMaterials() {
     filteredMaterials = filteredMaterials.filter(m => favorites.includes(m.id));
   } else if (filterMode === 'completed') {
     filteredMaterials = filteredMaterials.filter(m => completed.includes(m.id));
+  } else if (filterMode === 'uncompleted') {
+    filteredMaterials = filteredMaterials.filter(m => !completed.includes(m.id));
   }
   
   filteredMaterials.sort((a, b) => {
@@ -230,6 +232,7 @@ function setupEventListeners() {
   
   const filterFavorites = document.getElementById('filter-favorites');
   const filterCompleted = document.getElementById('filter-completed');
+  const filterUncompleted = document.getElementById('filter-uncompleted');
   
   filterFavorites.addEventListener('click', () => {
     if (filterMode === 'favorites') {
@@ -239,6 +242,7 @@ function setupEventListeners() {
       filterMode = 'favorites';
       filterFavorites.classList.add('active');
       filterCompleted.classList.remove('active');
+      filterUncompleted.classList.remove('active');
     }
     displayMaterials();
   });
@@ -251,6 +255,20 @@ function setupEventListeners() {
       filterMode = 'completed';
       filterCompleted.classList.add('active');
       filterFavorites.classList.remove('active');
+      filterUncompleted.classList.remove('active');
+    }
+    displayMaterials();
+  });
+  
+  filterUncompleted.addEventListener('click', () => {
+    if (filterMode === 'uncompleted') {
+      filterMode = 'none';
+      filterUncompleted.classList.remove('active');
+    } else {
+      filterMode = 'uncompleted';
+      filterUncompleted.classList.add('active');
+      filterFavorites.classList.remove('active');
+      filterCompleted.classList.remove('active');
     }
     displayMaterials();
   });
