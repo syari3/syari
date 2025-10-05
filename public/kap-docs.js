@@ -2,6 +2,42 @@ let materialsData = null;
 let selectedCategory = 'すべて';
 let searchQuery = '';
 let sortOrder = 'new';
+let favorites = [];
+let completed = [];
+let filterMode = 'none';
+
+function loadFromLocalStorage() {
+  const storedFavorites = localStorage.getItem('kap-favorites');
+  const storedCompleted = localStorage.getItem('kap-completed');
+  
+  favorites = storedFavorites ? JSON.parse(storedFavorites) : [];
+  completed = storedCompleted ? JSON.parse(storedCompleted) : [];
+}
+
+function saveToLocalStorage() {
+  localStorage.setItem('kap-favorites', JSON.stringify(favorites));
+  localStorage.setItem('kap-completed', JSON.stringify(completed));
+}
+
+function toggleFavorite(id) {
+  if (favorites.includes(id)) {
+    favorites = favorites.filter(fav => fav !== id);
+  } else {
+    favorites.push(id);
+  }
+  saveToLocalStorage();
+  displayMaterials();
+}
+
+function toggleCompleted(id) {
+  if (completed.includes(id)) {
+    completed = completed.filter(comp => comp !== id);
+  } else {
+    completed.push(id);
+  }
+  saveToLocalStorage();
+  displayMaterials();
+}
 
 async function loadMaterials() {
   try {
@@ -11,6 +47,7 @@ async function loadMaterials() {
     }
     materialsData = await response.json();
     
+    loadFromLocalStorage();
     displayCategories();
     displayMaterials();
     setupEventListeners();
@@ -67,6 +104,12 @@ function displayMaterials() {
     );
   }
   
+  if (filterMode === 'favorites') {
+    filteredMaterials = filteredMaterials.filter(m => favorites.includes(m.id));
+  } else if (filterMode === 'completed') {
+    filteredMaterials = filteredMaterials.filter(m => completed.includes(m.id));
+  }
+  
   filteredMaterials.sort((a, b) => {
     if (sortOrder === 'new') {
       return b.id - a.id;
@@ -105,14 +148,39 @@ function displayMaterials() {
     description.textContent = material.description;
     description.className = 'material-description';
     
+    const actions = document.createElement('div');
+    actions.className = 'material-actions';
+    
+    const favoriteBtn = document.createElement('button');
+    favoriteBtn.className = 'action-button favorite-button';
+    favoriteBtn.innerHTML = favorites.includes(material.id) ? '⭐' : '☆';
+    favoriteBtn.title = favorites.includes(material.id) ? 'お気に入りから削除' : 'お気に入りに追加';
+    favoriteBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      toggleFavorite(material.id);
+    });
+    
+    const completedBtn = document.createElement('button');
+    completedBtn.className = 'action-button completed-button';
+    completedBtn.innerHTML = completed.includes(material.id) ? '✓' : '○';
+    completedBtn.title = completed.includes(material.id) ? '未読に戻す' : '読了済みにする';
+    completedBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      toggleCompleted(material.id);
+    });
+    
+    actions.appendChild(favoriteBtn);
+    actions.appendChild(completedBtn);
+    
     info.appendChild(title);
     info.appendChild(category);
     info.appendChild(description);
+    info.appendChild(actions);
     
     card.appendChild(img);
     card.appendChild(info);
     
-    card.addEventListener('click', () => openModal(material.image));
+    img.addEventListener('click', () => openModal(material.image));
     
     materialsGrid.appendChild(card);
   });
@@ -157,6 +225,33 @@ function setupEventListeners() {
     sortOrder = 'old';
     sortOldButton.classList.add('active');
     sortNewButton.classList.remove('active');
+    displayMaterials();
+  });
+  
+  const filterFavorites = document.getElementById('filter-favorites');
+  const filterCompleted = document.getElementById('filter-completed');
+  
+  filterFavorites.addEventListener('click', () => {
+    if (filterMode === 'favorites') {
+      filterMode = 'none';
+      filterFavorites.classList.remove('active');
+    } else {
+      filterMode = 'favorites';
+      filterFavorites.classList.add('active');
+      filterCompleted.classList.remove('active');
+    }
+    displayMaterials();
+  });
+  
+  filterCompleted.addEventListener('click', () => {
+    if (filterMode === 'completed') {
+      filterMode = 'none';
+      filterCompleted.classList.remove('active');
+    } else {
+      filterMode = 'completed';
+      filterCompleted.classList.add('active');
+      filterFavorites.classList.remove('active');
+    }
     displayMaterials();
   });
 }
