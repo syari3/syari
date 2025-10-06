@@ -9,6 +9,8 @@ let filters = {
   completed: false,
   uncompleted: false
 };
+let zoomLevel = 1;
+let wheelEventListener = null;
 
 function loadFromLocalStorage() {
   const storedFavorites = localStorage.getItem('kap-favorites');
@@ -205,11 +207,46 @@ function openModal(imageSrc) {
   
   modalImage.src = imageSrc;
   modal.classList.add('active');
+  
+  zoomLevel = 1;
+  modalImage.style.transform = `scale(${zoomLevel})`;
+  
+  wheelEventListener = (e) => {
+    e.preventDefault();
+    
+    const zoomSpeed = 0.1;
+    
+    if (e.deltaY < 0) {
+      zoomLevel = Math.min(zoomLevel + zoomSpeed, 5);
+    } else {
+      zoomLevel = Math.max(zoomLevel - zoomSpeed, 0.5);
+    }
+    
+    modalImage.style.transform = `scale(${zoomLevel})`;
+    
+    if (zoomLevel > 1) {
+      modalImage.classList.add('zoomed');
+    } else {
+      modalImage.classList.remove('zoomed');
+    }
+  };
+  
+  modal.addEventListener('wheel', wheelEventListener, { passive: false });
 }
 
 function closeModal() {
   const modal = document.getElementById('modal-overlay');
   modal.classList.remove('active');
+  
+  if (wheelEventListener) {
+    modal.removeEventListener('wheel', wheelEventListener);
+    wheelEventListener = null;
+  }
+  
+  const modalImage = document.getElementById('modal-image');
+  modalImage.style.transform = 'scale(1)';
+  modalImage.classList.remove('zoomed');
+  zoomLevel = 1;
 }
 
 function setupEventListeners() {
