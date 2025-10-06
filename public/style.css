@@ -470,6 +470,10 @@ a:hover {
   color: #0277BD;
 }
 
+.language-image-placeholder img {
+  border-radius: 15px;
+}
+
 .language-title {
   margin: 0;
   color: #01579B;
