@@ -47,6 +47,14 @@
       "category": "基礎",
       "description": "t,eの2文字について学びます。文字最終回。",
       "date": "2025-10-05"
+    },
+    {
+      "id": 7,
+      "title": "kap語小テスト3について",
+      "image": "/img/notes/kap-test3.jpg",
+      "category": "テスト",
+      "description": "小テスト3の範囲をまとめました。",
+      "date": "2025-10-06"
     }
   ],
   "categories": [

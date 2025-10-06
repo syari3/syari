@@ -348,9 +348,13 @@ body {
   object-fit: contain;
   border-radius: 10px;
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
-  user-select: none;
-  -webkit-user-drag: none;
+  transition: transform 0.1s ease-out;
   transform-origin: center center;
+  cursor: zoom-in;
+}
+
+#modal-image.zoomed {
+  cursor: grab;
 }
 
 @media (max-width: 768px) {
