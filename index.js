@@ -1,8 +1,7 @@
 const express = require('express');
 const path = require('path');
 const fs = require('fs')
-const cors = require('cors');
-
+const cors = require('cors')
 const app = express();
 const port = 5000;
 
@@ -138,8 +137,7 @@ app.get('/search/word/:id', (req, res) => {
     }
   });
 });
-
-// サーバーを起動
+//If you deploy otherwhere,you should change '0.0.0.0' to something else
 app.listen(port, '0.0.0.0', () => {
   console.log(`Server running on http://0.0.0.0:${port}`);
 });
