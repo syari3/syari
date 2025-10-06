@@ -354,7 +354,7 @@ body {
 }
 
 #modal-image.zoomed {
-  cursor: zoom-out;
+  cursor: grab;
 }
 
 @media (max-width: 768px) {

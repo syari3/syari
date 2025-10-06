@@ -11,6 +11,11 @@ let filters = {
 };
 let zoomLevel = 1;
 let wheelEventListener = null;
+let isDragging = false;
+let startX = 0;
+let startY = 0;
+let translateX = 0;
+let translateY = 0;
 
 function loadFromLocalStorage() {
   const storedFavorites = localStorage.getItem('kap-favorites');
@@ -209,7 +214,9 @@ function openModal(imageSrc) {
   modal.classList.add('active');
   
   zoomLevel = 1;
-  modalImage.style.transform = `scale(${zoomLevel})`;
+  translateX = 0;
+  translateY = 0;
+  modalImage.style.transform = `scale(${zoomLevel}) translate(${translateX}px, ${translateY}px)`;
   
   wheelEventListener = (e) => {
     e.preventDefault();
@@ -219,23 +226,63 @@ function openModal(imageSrc) {
     if (e.deltaY < 0) {
       zoomLevel = Math.min(zoomLevel + zoomSpeed, 5);
     } else {
-      zoomLevel = Math.max(zoomLevel - zoomSpeed, 0.5);
+      zoomLevel = Math.max(zoomLevel - zoomSpeed, 1);
     }
     
-    modalImage.style.transform = `scale(${zoomLevel})`;
+    modalImage.style.transform = `scale(${zoomLevel}) translate(${translateX}px, ${translateY}px)`;
     
     if (zoomLevel > 1) {
       modalImage.classList.add('zoomed');
     } else {
       modalImage.classList.remove('zoomed');
+      translateX = 0;
+      translateY = 0;
+      modalImage.style.transform = `scale(${zoomLevel}) translate(0px, 0px)`;
+    }
+  };
+  
+  const mouseDownHandler = (e) => {
+    if (zoomLevel > 1) {
+      isDragging = true;
+      startX = e.clientX - translateX;
+      startY = e.clientY - translateY;
+      modalImage.style.cursor = 'grabbing';
+    }
+  };
+  
+  const mouseMoveHandler = (e) => {
+    if (!isDragging) return;
+    
+    e.preventDefault();
+    translateX = e.clientX - startX;
+    translateY = e.clientY - startY;
+    modalImage.style.transform = `scale(${zoomLevel}) translate(${translateX}px, ${translateY}px)`;
+  };
+  
+  const mouseUpHandler = () => {
+    if (isDragging) {
+      isDragging = false;
+      if (zoomLevel > 1) {
+        modalImage.style.cursor = 'grab';
+      }
     }
   };
   
   modal.addEventListener('wheel', wheelEventListener, { passive: false });
+  modalImage.addEventListener('mousedown', mouseDownHandler);
+  modal.addEventListener('mousemove', mouseMoveHandler);
+  modal.addEventListener('mouseup', mouseUpHandler);
+  modal.addEventListener('mouseleave', mouseUpHandler);
+  
+  modalImage.mouseDownHandler = mouseDownHandler;
+  modalImage.mouseMoveHandler = mouseMoveHandler;
+  modalImage.mouseUpHandler = mouseUpHandler;
 }
 
 function closeModal() {
   const modal = document.getElementById('modal-overlay');
+  const modalImage = document.getElementById('modal-image');
+  
   modal.classList.remove('active');
   
   if (wheelEventListener) {
@@ -243,10 +290,20 @@ function closeModal() {
     wheelEventListener = null;
   }
   
-  const modalImage = document.getElementById('modal-image');
-  modalImage.style.transform = 'scale(1)';
+  if (modalImage.mouseDownHandler) {
+    modalImage.removeEventListener('mousedown', modalImage.mouseDownHandler);
+    modal.removeEventListener('mousemove', modalImage.mouseMoveHandler);
+    modal.removeEventListener('mouseup', modalImage.mouseUpHandler);
+    modal.removeEventListener('mouseleave', modalImage.mouseUpHandler);
+  }
+  
+  modalImage.style.transform = 'scale(1) translate(0px, 0px)';
+  modalImage.style.cursor = 'zoom-in';
   modalImage.classList.remove('zoomed');
   zoomLevel = 1;
+  translateX = 0;
+  translateY = 0;
+  isDragging = false;
 }
 
 function setupEventListeners() {
