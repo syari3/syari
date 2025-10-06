@@ -10,6 +10,13 @@ let filters = {
   uncompleted: false
 };
 
+let zoomLevel = 1;
+let isDragging = false;
+let dragStartX = 0;
+let dragStartY = 0;
+let translateX = 0;
+let translateY = 0;
+
 function loadFromLocalStorage() {
   const storedFavorites = localStorage.getItem('kap-favorites');
   const storedCompleted = localStorage.getItem('kap-completed');
@@ -203,13 +210,53 @@ function openModal(imageSrc) {
   const modal = document.getElementById('modal-overlay');
   const modalImage = document.getElementById('modal-image');
   
+  zoomLevel = 1;
+  translateX = 0;
+  translateY = 0;
+  isDragging = false;
+  
   modalImage.src = imageSrc;
   modal.classList.add('active');
+  updateImageTransform();
 }
 
 function closeModal() {
   const modal = document.getElementById('modal-overlay');
   modal.classList.remove('active');
+  
+  zoomLevel = 1;
+  translateX = 0;
+  translateY = 0;
+  isDragging = false;
+  const modalImage = document.getElementById('modal-image');
+  updateImageTransform();
+}
+
+function updateImageTransform() {
+  const modalImage = document.getElementById('modal-image');
+  modalImage.style.transform = `translate(${translateX}px, ${translateY}px) scale(${zoomLevel})`;
+  modalImage.style.cursor = zoomLevel > 1 ? 'grab' : 'default';
+}
+
+function getBounds() {
+  const modalImage = document.getElementById('modal-image');
+  const modalContent = document.querySelector('.modal-content');
+  
+  const imageWidth = modalImage.naturalWidth * zoomLevel;
+  const imageHeight = modalImage.naturalHeight * zoomLevel;
+  const containerWidth = modalContent.clientWidth;
+  const containerHeight = modalContent.clientHeight;
+  
+  const maxX = Math.max(0, (imageWidth - containerWidth) / 2);
+  const maxY = Math.max(0, (imageHeight - containerHeight) / 2);
+  
+  return { maxX, maxY };
+}
+
+function clampTranslate() {
+  const bounds = getBounds();
+  translateX = Math.max(-bounds.maxX, Math.min(bounds.maxX, translateX));
+  translateY = Math.max(-bounds.maxY, Math.min(bounds.maxY, translateY));
 }
 
 function setupEventListeners() {
@@ -279,6 +326,49 @@ document.getElementById('modal-close').addEventListener('click', closeModal);
 document.getElementById('modal-overlay').addEventListener('click', (e) => {
   if (e.target.id === 'modal-overlay') {
     closeModal();
+  }
+});
+
+const modalImage = document.getElementById('modal-image');
+
+modalImage.addEventListener('wheel', (e) => {
+  e.preventDefault();
+  
+  const delta = e.deltaY > 0 ? -0.1 : 0.1;
+  const newZoom = Math.max(1, Math.min(5, zoomLevel + delta));
+  
+  if (newZoom !== zoomLevel) {
+    zoomLevel = newZoom;
+    clampTranslate();
+    updateImageTransform();
+  }
+});
+
+modalImage.addEventListener('mousedown', (e) => {
+  if (zoomLevel > 1) {
+    isDragging = true;
+    dragStartX = e.clientX - translateX;
+    dragStartY = e.clientY - translateY;
+    modalImage.style.cursor = 'grabbing';
+    e.preventDefault();
+  }
+});
+
+document.addEventListener('mousemove', (e) => {
+  if (isDragging) {
+    translateX = e.clientX - dragStartX;
+    translateY = e.clientY - dragStartY;
+    clampTranslate();
+    updateImageTransform();
+  }
+});
+
+document.addEventListener('mouseup', () => {
+  if (isDragging) {
+    isDragging = false;
+    if (zoomLevel > 1) {
+      modalImage.style.cursor = 'grab';
+    }
   }
 });
 
