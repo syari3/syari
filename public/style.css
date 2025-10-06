@@ -438,7 +438,7 @@ a:hover {
   height: min(300px, 60vw);
   background: linear-gradient(135deg, #FFFFFF 0%, #F0F8FF 100%);
   border: 2px solid #B3E5FC;
-  border-radius: 25px;
+  border-radius: 20px;
   padding: 20px;
   display: flex;
   flex-direction: column;
@@ -469,8 +469,9 @@ a:hover {
   font-size: 14px;
   color: #0277BD;
 }
-.language-image-placeholder img{
-  border-radius:15px;
+
+.language-image-placeholder img {
+  border-radius: 15px;
 }
 
 .language-title {
