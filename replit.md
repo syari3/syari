@@ -40,17 +40,21 @@ Preferred communication style: Simple, everyday language.
 
 ### Backend Architecture
 
-**Express.js Static File Server**
+**Express.js API Server** (Updated 2025-10-07)
 - Minimal Node.js server using Express 4.x
-- Primary purpose: serve static files and HTML pages
-- CORS enabled for cross-origin requests with specific whitelist
-- Rationale: Lightweight, simple to deploy, minimal server-side processing needed
+- **API-only server** - frontend separated to GitHub Pages (https://syari3.github.io/syari-frontend)
+- Deployed to Render for backend API functionality
+- Uses `process.env.PORT || 5000` for flexible port configuration
+- CORS enabled for GitHub Pages origin (https://syari3.github.io)
+- Rationale: Separation of concerns - API on Render, SEO-optimized static frontend on GitHub Pages
 
-**Route Structure**
-- Simple route-to-file mapping without MVC framework
-- Routes: /, /syari, /kap, /kap/search, /kap/docs, /syari/search
-- Each route serves corresponding HTML file
-- Incomplete search endpoint at `/search/parts/:parts` (backend search feature appears partially implemented)
+**API Endpoints**
+- `GET /data` - Returns complete Syari dictionary data (data.json)
+- `GET /kap-data.json` - Returns Kap language dictionary data
+- `GET /kap-materials.json` - Returns study materials metadata
+- `GET /search/parts/:parts` - Searches Syari words by character parts
+- `GET /search/word/:id` - Returns specific word details by ID
+- All endpoints return JSON responses
 
 **Data Storage Strategy**
 - JSON files as primary data store (data.json, full.json, kap-data.json, kap-materials.json)
@@ -84,10 +88,15 @@ Preferred communication style: Simple, everyday language.
 - Study materials and notes stored in /img/notes/ directory
 - Favicon for browser tab display
 
-### External Services
-- CORS whitelist includes:
-  - https://syari.onrender.com/ (production deployment)
-  - Replit development environment URL
+### Deployment Architecture (Updated 2025-10-07)
+- **Backend API**: Deployed to Render (e.g., https://syari-api.onrender.com)
+  - API-only Node.js server
+  - Serves JSON data endpoints
+  - CORS configured for GitHub Pages origin
+- **Frontend**: Deployed to GitHub Pages (https://syari3.github.io/syari-frontend)
+  - Static HTML, CSS, JavaScript files from public/ folder
+  - Fetches data from Render API
+  - SEO-optimized for Google search visibility
 - Google site verification for search console integration
 
 ### Data Format
