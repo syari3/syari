@@ -211,6 +211,54 @@
     ],
     "notes": "muより弱い否定である。"
   },
+  "kipos": {
+    "reading": "キ(ポー)↑ス",
+    "meaning": "[存在動詞] (ga ~) である",
+    "etymology": "・kap(私) + s(動詞化する)から",
+    "examples": [
+      {
+        "kapu": "kipos gu kap ga siali.",
+        "japanese": "私はしゃりーだ。"
+      }
+    ],
+    "notes": "kiposを使った文は、gu = gaの関係になる。"
+  },
+  "sa": {
+    "reading": "サー",
+    "meaning": "(ga ~) をする",
+    "etymology": "・日本語「する」から",
+    "examples": [
+      {
+        "kapu": "na!, sa gu kap zak ga nia!",
+        "japanese": "いいね！私達はあれをするよ！"
+      }
+    ],
+    "notes": "特になし"
+  },
+  "kopis": {
+    "reading": "(コ)↑ピス",
+    "meaning": "(ga ~) が好き",
+    "etymology": "kap(私) + s(動詞化する)から",
+    "examples": [
+      {
+        "kapu": "kopis gu kap ga susi.",
+        "japanese": "私は寿司が好きです。"
+      }
+    ],
+    "notes": "特になし"
+  },
+  "mukopis": {
+    "reading": "(ム)↓コピス",
+    "meaning": "(ga ~) が嫌い",
+    "etymology": "mu(否定) + kopis(好き)から",
+    "examples": [
+      {
+        "kapu": "mukopis gu kap ga kikiok.",
+        "japanese": "私は人が嫌いだ。"
+      }
+    ],
+    "notes": "特になし"
+  },
   "": {
     "reading": "",
     "meaning": "",
