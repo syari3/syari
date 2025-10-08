@@ -100,7 +100,12 @@ function displayMaterials() {
   
   let filteredMaterials = selectedCategory === 'すべて' 
     ? [...materialsData.materials]
-    : materialsData.materials.filter(m => m.category === selectedCategory);
+    : materialsData.materials.filter(m => {
+        if (Array.isArray(m.category)) {
+          return m.category.includes(selectedCategory);
+        }
+        return m.category === selectedCategory;
+      });
   
   if (searchQuery) {
     const query = searchQuery.toLowerCase();
@@ -151,7 +156,9 @@ function displayMaterials() {
     title.className = 'material-title';
     
     const category = document.createElement('span');
-    category.textContent = material.category;
+    category.textContent = Array.isArray(material.category) 
+      ? material.category.join(' / ') 
+      : material.category;
     category.className = 'material-category';
     
     const description = document.createElement('p');
