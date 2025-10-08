@@ -55,6 +55,22 @@
       "category": "テスト",
       "description": "小テスト3の範囲をまとめました。",
       "date": "2025-10-06"
+    },
+    {
+      "id": 8,
+      "title": "kap語ノート6ページ目",
+      "image": "/img/notes/kap-p6.jpg",
+      "category": ["語彙","基礎","テスト"],
+      "description": "挨拶のページ。1枚目。",
+      "date": "2025-10-08"
+    },
+    {
+      "id": 9,
+      "title": "kap語ノート7ページ目",
+      "image": "/img/notes/kap-p7.jpg",
+      "category": ["語彙","基礎","テスト"],
+      "description": "挨拶のページ。2枚目。",
+      "date": "2025-10-08"
     }
   ],
   "categories": [
