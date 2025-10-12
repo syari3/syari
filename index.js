@@ -3,16 +3,44 @@ const path = require('path');
 const fs = require('fs')
 const cors = require('cors')
 const app = express();
-const port = process.env.PORT || 5000;
+const port = 5000;
 
+app.use(cors());
 const corsOptions = {
   origin: [
-    "https://syari3.github.io"
+    "https://syari-api.onrender.com/",
+    "https://9788f66b-f961-4be5-86a7-702fa6a3717d-00-3jjyqm01cm8dz.worf.replit.dev/"
   ],
-  optionsSuccessStatus: 200,
-  credentials: true
+  optionsSuccessStatus: 200, // For legacy browsers support
 };
 app.use(cors(corsOptions));
+
+// 静的ファイルの提供
+app.use(express.static('public'));
+
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'home.html'));
+});
+
+app.get('/syari', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'syari.html'));
+});
+
+app.get('/kap', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'kap.html'));
+});
+
+app.get('/kap/search', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'kap/search.html'));
+});
+
+app.get('/kap/docs', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'kap/docs.html'));
+});
+
+app.get('/syari/search/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'syari/search.html'));
+});
 
 function findMatchingObjects(data, parts) {
   return Object.entries(data).filter(([key, value]) => 
@@ -89,17 +117,23 @@ app.get('/search/word/:id', (req, res) => {
   fs.readFile(filename, "utf8", (err, jsonString) => {
     if (err) {
       console.log("Error reading file", err);
-      res.status(500).json({ error: 'Error reading file' });
+      res.status(500).send('Error reading file');
       return;
     }
 
     const data = JSON.parse(jsonString);
     const item = data[id];
 
+    // fullプロパティがokか確認
     if (item) {
-      res.json(item);
+      res.send(`
+        <h1>${item.yomi}</h1>
+        <p>意味: ${item.imi}</p>
+        <p>詳細情報: ${item.kaisetu || '情報はありません。'}</p>
+        <a href="/search/">戻る</a>
+      `);
     } else {
-      res.status(404).json({ error: 'アイテムが見つかりません。' });
+      res.status(404).send('アイテムが見つかりません。');
     }
   });
 });
