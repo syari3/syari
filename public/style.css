@@ -479,3 +479,59 @@ a:hover {
   font-size: clamp(1.3rem, 4vw, 1.8rem);
   text-align: center;
 }
+
+.intro-section {
+  max-width: min(800px, 90vw);
+  margin: 30px auto;
+  padding: 20px 30px;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 15px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 15px rgba(3, 169, 244, 0.1);
+  animation: fadeIn 0.8s ease-out 0.2s backwards;
+}
+
+.intro-section p {
+  color: #01579B;
+  line-height: 1.8;
+  font-size: clamp(1rem, 2.5vw, 1.1rem);
+}
+
+.language-info {
+  max-width: min(800px, 90vw);
+  margin: 40px auto;
+  animation: fadeIn 0.8s ease-out 0.4s backwards;
+}
+
+.language-info h2 {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.language-description {
+  margin: 25px 0;
+  padding: 20px 30px;
+  background: linear-gradient(135deg, #FFFFFF 0%, #F0F8FF 100%);
+  border: 2px solid #B3E5FC;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(3, 169, 244, 0.1);
+  transition: all 0.3s ease;
+}
+
+.language-description:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(3, 169, 244, 0.2);
+  border-color: #81D4FA;
+}
+
+.language-description h3 {
+  color: #0277BD;
+  margin-bottom: 15px;
+  font-size: clamp(1.1rem, 3vw, 1.4rem);
+}
+
+.language-description p {
+  color: #01579B;
+  line-height: 1.8;
+  font-size: clamp(0.95rem, 2.5vw, 1.05rem);
+}
