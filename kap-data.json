@@ -259,26 +259,14 @@
     ],
     "notes": "特になし"
   },
-  "ziat": {
-    "reading": "ジャーッ",
-    "meaning": "(ga ~) を見る",
-    "etymology": "日本語「じーっと」から",
+  "": {
+    "reading": "",
+    "meaning": "",
+    "etymology": "",
     "examples": [
       {
-        "kapu": "ziat gu liun ga kap zak.",
-        "japanese": "月は私たちを見ている。"
-      }
-    ],
-    "notes": "特になし"
-  },
-  "neban": {
-    "reading": "(ネ)↑バン",
-    "meaning": "(ga ~) について話す<br>(ga ~) と言う",
-    "etymology": "・kap語「nabon」(虫)から<br>・虫がたくさん話してそうだから",
-    "examples": [
-      {
-        "kapu": "neban gu kap ga zakap e leh.",
-        "japanese": "私はあなたとポケモンについて話す。"
+        "kapu": "",
+        "japanese": ""
       }
     ],
     "notes": "特になし"
