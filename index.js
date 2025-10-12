@@ -7,12 +7,17 @@ const port = process.env.PORT || 5000;
 
 const corsOptions = {
   origin: [
-    "https://syari3.github.io"
+    "https://syari3.github.io",
+    /\.replit\.dev$/,
+    /\.replit\.app$/
   ],
   optionsSuccessStatus: 200,
   credentials: true
 };
 app.use(cors(corsOptions));
+
+// 静的ファイルの配信
+app.use(express.static('public'));
 
 function findMatchingObjects(data, parts) {
   return Object.entries(data).filter(([key, value]) => 
