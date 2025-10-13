@@ -9,7 +9,7 @@ app.use(cors());
 const corsOptions = {
   origin: [
     "https://syari-api.onrender.com/",
-    "https://syari.onrender.com/"
+    "https://syari.onrender.com/",
     "https://9788f66b-f961-4be5-86a7-702fa6a3717d-00-3jjyqm01cm8dz.worf.replit.dev/"
   ],
   optionsSuccessStatus: 200, // For legacy browsers support

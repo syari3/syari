@@ -109,8 +109,8 @@
     "etymology": "よくわからない。<br>・音象徴「だんだんと」から？<br>・月が昇る様子から？",
     "examples": [
       {
-        "kapu": "gan gu kap zank biopet ga solk",
-        "japanese": "私はこんばんはと聞くと悲しくなる。"
+        "kapu": "neban gu liun ga solk",
+        "japanese": "月がこんばんはと言う。"
       }
     ],
     "notes": "特になし"
@@ -238,7 +238,7 @@
   "kopis": {
     "reading": "(コ)↑ピス",
     "meaning": "(ga ~) が好き",
-    "etymology": "kap(私) + s(動詞化する)から",
+    "etymology": "・kap(私) + s(動詞化する)から",
     "examples": [
       {
         "kapu": "kopis gu kap ga susi.",
@@ -250,7 +250,7 @@
   "mukopis": {
     "reading": "(ム)↓コピス",
     "meaning": "(ga ~) が嫌い",
-    "etymology": "mu(否定) + kopis(好き)から",
+    "etymology": "・mu(否定) + kopis(好き)から",
     "examples": [
       {
         "kapu": "mukopis gu kap ga kikiok.",
@@ -259,14 +259,130 @@
     ],
     "notes": "特になし"
   },
-  "": {
-    "reading": "",
-    "meaning": "",
-    "etymology": "",
+  "basiu": {
+    "reading": "(バ)↑シュ",
+    "meaning": "(ga ~) を攻撃する",
+    "etymology": "・音象徴「切る」から",
     "examples": [
       {
-        "kapu": "",
-        "japanese": ""
+        "kapu": "basiu mutia gu kiopa ga kikiok zak.",
+        "japanese": "守り神は人を攻撃しない。"
+      }
+    ],
+    "notes": "特になし"
+  },
+  "susian": {
+    "reading": "(スー)↑シャン",
+    "meaning": "(ga ~) を守る",
+    "etymology": "・なんとなく？<br>kap語「basiu」から？",
+    "examples": [
+      {
+        "kapu": "susian gu kiopa ga mikug zak.",
+        "japanese": "守り神は島を守る。"
+      }
+    ],
+    "notes": "特になし"
+  },
+  "neban": {
+    "reading": "(ネ)↑バン",
+    "meaning": "(ga ~) について話す、<br>(ga ~) と言う",
+    "etymology": "・kap語「nabon」(虫)から<br>・虫はたくさん話してそうだから",
+    "examples": [
+      {
+        "kapu": "neban gu kap ga piki e siali.",
+        "japanese": "私はしゃりーに明日について話す。"
+      },
+      {
+        "kapu": "neban gu kiopa ga mioat.",
+        "japanese": "守り神はおやすみと言う。"
+      }
+    ],
+    "notes": "特になし"
+  },
+  "lopun": {
+    "reading": "(ロ)↑プン",
+    "meaning": "(ga ~) に行く",
+    "etymology": "kap語「lapon」(飛行)から<br>・飛行できるならいろんな場所に行けそうだから",
+    "examples": [
+      {
+        "kapu": "lopun gu kap ga hual.",
+        "japanese": "私は家に行く。"
+      }
+    ],
+    "notes": "特になし"
+  },
+  "biopet": {
+    "reading": "(ビョー)↑ペット",
+    "meaning": "(ga ~) を聞く",
+    "etymology": "・kap語「bapot」(エスパー)から<br>・いろいろな物の声が聞こえそうだから",
+    "examples": [
+      {
+        "kapu": "gan gu kap zank biopet ga imalo",
+        "japanese": "私はさようならと聞くと悲しくなる。"
+      }
+    ],
+    "notes": "特になし"
+  },
+  "kalom": {
+    "reading": "(カー)↑ロム",
+    "meaning": "(ga ~) を書く、(ga ~) について書く",
+    "etymology": "・なんとなく?<br>・たぶん「kalam」(ごめん)とは関係ない",
+    "examples": [
+      {
+        "kapu": "kalom gu kap ga mikupal e siali.",
+        "japanese": "私はしゃりーのために地図を書く。"
+      },
+      {
+        "kapu": "kalom gu kap ga mohu.",
+        "japanese": "私は昨日について書く。"
+      }
+    ],
+    "notes": "特になし"
+  },
+  "ziat": {
+    "reading": "(ジャ)↑ット",
+    "meaning": "(ga ~) を見る",
+    "etymology": "・日本語「じーっと」から",
+    "examples": [
+      {
+        "kapu": "ziat gu ton ga kap.",
+        "japanese": "彼は私を見る。"
+      }
+    ],
+    "notes": "特になし"
+  },
+  "gasia": {
+    "reading": "(グァー)↑シャ",
+    "meaning": "(ga ~) を作る",
+    "etymology": "・日本語「ガチャガチャと」から<br>・すごい物を作るのは大きな音がでるから。",
+    "examples": [
+      {
+        "kapu": "gasia gu kap ga musia.",
+        "japanese": "私は食べ物を作る。"
+      }
+    ],
+    "notes": "特になし"
+  },
+  "pona": {
+    "reading": "(ポー)↑ナ",
+    "meaning": "(ga ~) を手に入れる",
+    "etymology": "・効果音「ポン」から<br>・ゲームなどで物を拾ったときの音。",
+    "examples": [
+      {
+        "kapu": "pona gu kikiok zak ga hagoz.",
+        "japanese": "人々は火を手に入れる。"
+      }
+    ],
+    "notes": "特になし"
+  },
+  "ziasa": {
+    "reading": "(ジャー)↑サ",
+    "meaning": "(ga ~) が欲しい",
+    "etymology": "・なんとなく?",
+    "examples": [
+      {
+        "kapu": "ziasa gu kap ga palal.",
+        "japanese": "私は本が欲しい。"
       }
     ],
     "notes": "特になし"
