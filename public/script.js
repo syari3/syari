@@ -71,14 +71,14 @@ function changeImage(changeTable) {
 function ifChange() {
   changeImage(oChangeTable);
   changeImage(zChangeTable);
-  changeImage(lChangeTable); 
+  changeImage(lChangeTable);
   //HTML内に画像を表示
-  html2canvas(document.getElementById("target"),{
-    onrendered: function(canvas){
+  html2canvas(document.getElementById("target"), {
+    onrendered: function (canvas) {
       //imgタグのsrcの中に、html2canvasがレンダリングした画像を指定する。
       var imgData = canvas.toDataURL();
       document.getElementById("ss").href = imgData;
-    }
+    },
   });
 }
 async function sleep(time) {
@@ -92,9 +92,9 @@ async function dialog(message) {
   // ダイアログを表示させる関数
   id("dialog-cover").style.display = "flex";
   id("message").textContent = message;
-  for(var i=1; i<=100; i++) {
-    id("dialog-cover").style.opacity = i**2/10000;
-    await sleep(10)
+  for (var i = 1; i <= 100; i++) {
+    id("dialog-cover").style.opacity = i ** 2 / 10000;
+    await sleep(10);
   }
 }
 
@@ -179,8 +179,7 @@ async function dialog(message) {
   ifChange();
 })();
 
-function adjustElementSize() {
-}
+function adjustElementSize() {}
 window.addEventListener("resize", adjustElementSize);
 adjustElementSize();
 
@@ -189,13 +188,13 @@ function switchSearchType() {
   const readingRadio = document.getElementById("reading-radio");
   const japaneseRadio = document.getElementById("japanese-radio");
   if (syariRadio.checked) {
-    document.getElementById("syari").style.display = "grid"; 
-    document.getElementById("reading").style.display = "none"; 
-    document.getElementById("japanese").style.display = "none"; 
+    document.getElementById("syari").style.display = "grid";
+    document.getElementById("reading").style.display = "none";
+    document.getElementById("japanese").style.display = "none";
   } else if (readingRadio.checked) {
     document.getElementById("syari").style.display = "none";
-    document.getElementById("reading").style.display = "grid"; 
-    document.getElementById("japanese").style.display = "none"; 
+    document.getElementById("reading").style.display = "grid";
+    document.getElementById("japanese").style.display = "none";
   } else if (japaneseRadio.checked) {
     document.getElementById("syari").style.display = "none";
     document.getElementById("reading").style.display = "none";
