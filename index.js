@@ -24,19 +24,19 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
-app.get('/syari', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'syari.html'));
+app.get('/syari/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'syari/index.html'));
 });
 
-app.get('/kap', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'kap.html'));
+app.get('/kap/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'kap/index.html'));
 });
 
-app.get('/kap/search', (req, res) => {
+app.get('/kap/search/', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'kap/search.html'));
 });
 
-app.get('/kap/docs', (req, res) => {
+app.get('/kap/docs/', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'kap/docs.html'));
 });
 
