@@ -15,7 +15,7 @@ Preferred communication style: Simple, everyday language.
 **Static HTML Pages Pattern**
 - The application uses traditional multi-page architecture with separate HTML files for each route
 - Rationale: Simple deployment, no build process required, SEO-friendly
-- Pages: home.html, syari.html, syari-search.html, kap.html, kap-search.html, kap-docs.html
+- Pages: index.html, syaritatsu/index.html, syaritatsu/search.html, kap/index.html, kap/search.html, kap/docs.html
 - Each page includes its own inline or linked JavaScript for interactivity
 
 **Client-Side Search Logic**
@@ -25,7 +25,7 @@ Preferred communication style: Simple, everyday language.
 - Rationale: Reduces server load, enables offline-capable functionality, simpler architecture
 
 **Visual Component System**
-- Character builder interface using clickable image components (syari-search.html)
+- Character builder interface using clickable image components (syaritatsu/search.html)
 - Images represent language character parts that can be combined
 - Parts tracked in arrays and used to filter dictionary entries
 - Custom font files for displaying constructed language characters (kap-original.ttf)
@@ -49,10 +49,10 @@ Preferred communication style: Simple, everyday language.
 - Rationale: Separation of concerns - API on Render, SEO-optimized static frontend on GitHub Pages
 
 **API Endpoints**
-- `GET /data` - Returns complete Syari dictionary data (data.json)
+- `GET /data` - Returns complete Syaritatsu dictionary data (data.json)
 - `GET /kap-data.json` - Returns Kap language dictionary data
 - `GET /kap-materials.json` - Returns study materials metadata
-- `GET /search/parts/:parts` - Searches Syari words by character parts
+- `GET /search/parts/:parts` - Searches Syaritatsu words by character parts
 - `GET /search/word/:id` - Returns specific word details by ID
 - All endpoints return JSON responses
 
@@ -101,6 +101,6 @@ Preferred communication style: Simple, everyday language.
 
 ### Data Format
 Dictionary entries follow structured JSON format:
-- **Syari language**: word key, yomi (reading), imi (meaning), parts (character components), optional fields (gogen/etymology, kaisetu/explanation, reibun/examples)
+- **Syaritatsu language**: word key, yomi (reading), imi (meaning), parts (character components), optional fields (gogen/etymology, kaisetu/explanation, reibun/examples)
 - **Kap language**: reading, meaning, etymology, examples (kapu/japanese pairs), notes
 - **Materials metadata** (kap-materials.json): id, title, image path, category, description, date

@@ -9,14 +9,14 @@
     <priority>1.0</priority>
   </url>
 
-  <!-- Syari 関連ページ -->
+  <!-- Syaritatsu 関連ページ -->
   <url>
-    <loc>https://syari3.github.io/syari/</loc>
+    <loc>https://syari3.github.io/syaritatsu/</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://syari3.github.io/syari/search/</loc>
+    <loc>https://syari3.github.io/syaritatsu/search/</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
