@@ -11,12 +11,6 @@
 }
 
 @font-face{
-  font-family: "kap-alphabet";
-  src: url("/fonts/kap-alphabet.ttf") format("truetype");
-  font-display:swap
-}
-
-@font-face{
   font-family: "syari";
   src: url("/fonts/syaritatsu.ttf") format("truetype");
 }
@@ -28,7 +22,7 @@
 }
 
 body {
-  font-family: "kap-original", "kap-alphabet", "honokadaze";
+  font-family: "kap-original", "syari", "honokadaze";
   background: linear-gradient(135deg, #E3F2FD 0%, #F3E5F5 50%, #FFF9C4 100%);
   min-height: 100vh;
   padding: 20px;
@@ -45,7 +39,7 @@ h1 {
 h2 {
   word-break: keep-all;
   overflow-wrap: anywhere; 
-  font-family: "kap-original", "kap-alphabet","honokadaze";
+  font-family: "kap-original", "syari","honokadaze";
   font-size: clamp(1.3rem, 4vw, 2rem);
   color: #0277BD;
   margin-bottom: 1rem;
@@ -150,7 +144,7 @@ a:hover {
   left: 50%;
   transform: translateX(-50%);
   color: #FFFFFF;
-  font-family: "kap-original", "kap-alphabet","honokadaze";
+  font-family: "kap-original", "syari","honokadaze";
   font-weight: 600;
   font-size: 16px;
   box-shadow: 0 4px 15px rgba(3, 169, 244, 0.3);
@@ -251,7 +245,7 @@ a:hover {
   text-decoration: none;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   border: none;
-  font-family: "kap-original", "kap-alphabet","honokadaze";
+  font-family: "kap-original", "syari","honokadaze";
   cursor: pointer;
   font-weight: 600;
   letter-spacing: 0.5px;
@@ -383,7 +377,7 @@ a:hover {
   padding: 15px 20px;
   border: 2px solid #B3E5FC;
   border-radius: 25px;
-  font-family: "kap-original", "kap-alphabet","honokadaze";
+  font-family: "kap-original", "syari","honokadaze";
   font-size: 16px;
   width: min(400px, 80vw);
   background: rgba(255, 255, 255, 0.9);

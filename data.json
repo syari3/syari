@@ -364,5 +364,195 @@
     "yomi": "やーぬ",
     "imi": "~タイプ",
     "parts": ["u","o"]
+  },
+  "syariyatu":{
+    "yomi": "しゃりやつ",
+    "imi": "シャリタツ",
+    "parts":["ms","o","m"]
+  },
+  "ori-":{
+    "yomi": "おりー",
+    "imi": "~だけ",
+    "parts":["hs","ts","m","w"]
+  },
+  "momosisu":{
+    "yomi": "ももしす",
+    "imi": "よろしく",
+    "parts":["ms","ns","o","w"]
+  },
+  "omeyarisiyanu":{
+    "yomi": "おめやりしやぬ",
+    "imi": "お願いします、~をください",
+    "parts":["ms","ts","o","w"]
+  },
+  "sunu":{
+    "yomi": "すぬ",
+    "imi": "~できる",
+    "parts":["hs","ss","z"]
+  },
+  "ja-":{
+    "yomi": "じゃー",
+    "imi": "じゃあ、それなら",
+    "parts":["hs","ss","w","u"]
+  },
+  "riya-nusi":{
+    "yomi": "りやーぬし",
+    "imi": "御三家",
+    "parts":["s","ss","o","m","w","u"]
+  },
+  "mo":{
+    "yomi": "も",
+    "imi": "~も",
+    "parts":["hs","ts","m","w","l"]
+  },
+  "syarisyari":{
+    "yomi": "しゃりしゃり",
+    "imi": "はい、yes",
+    "parts":["o"]
+  },
+  "syamo-su":{
+    "yomi": "しゃもーす",
+    "imi": "逃がす",
+    "parts":["ms",""]
+  },
+  "reltu":{
+    "yomi": "れっ",
+    "imi": "~しよう",
+    "parts":["ss","m"]
+  },
+  "nu-me":{
+    "yomi": "ぬーめ",
+    "imi": "これで",
+    "parts":["s","ns","o","m","w"]
+  },
+  "rya":{
+    "yomi": "りゃ",
+    "imi": "(過去形にする)",
+    "parts":["o","l"]
+  },
+  "suyamo-":{
+    "yomi": "すやもー",
+    "imi": "スタート、始める",
+    "parts":["ss","o","z","m","u"]
+  },
+  "siyame":{
+    "yomi": "しやめ",
+    "imi": "知る",
+    "parts":["ms","ns","z","w","u"]
+  },
+  "syame":{
+    "yomi": "しゃめ",
+    "imi": "知らない",
+    "parts":["ms","ns","z","w","u","l"]
+  },
+  "riyari-":{
+    "yomi": "りやりー",
+    "imi": "本当に、本当の",
+    "parts":["ts","hs"]
+  },
+  "o-me-":{
+    "yomi": "おーめー",
+    "imi": "大丈夫、OK",
+    "parts":["hs","ss","m","u"]
+  },
+  "me-sya":{
+    "yomi": "めーしゃ",
+    "imi": "そういえば",
+    "parts":["hs","ss","z","m"]
+  },
+  "tumo-ya":{
+    "yomi": "つもーや",
+    "imi": "(未来形にする)、この後",
+    "parts":["hs","ns","o","w","l"]
+  },
+  "remenu":{
+    "yomi": "れめぬ",
+    "imi": "レベル",
+    "parts":["ns","o","m","w"]
+  },
+  "numosi-":{
+    "yomi": "ぬもしー",
+    "imi": "勝つ",
+    "parts":["ss","o","z"]
+  },
+  "syarimeltu":{
+    "yomi": "しゃりめっ",
+    "imi": "対戦、バトル",
+    "parts":["ss","o","w"]
+  },
+  "tusya":{
+    "yomi": "つしゃ",
+    "imi": "~番",
+    "parts":["z","m"]
+  },
+  "mo-syanusya":{
+    "yomi": "もーしゃぬしゃ",
+    "imi": "いってらっしゃい",
+    "parts":["ms","ts","o","z","l"]
+  },
+  "nu-memmo-":{
+    "yomi": "ぬーめっもー",
+    "imi": "水鉄砲",
+    "parts":["hs","ss","o","z","m","u"]
+  },
+  "syanumosi-":{
+    "yomi": "しゃぬもしー",
+    "imi": "負ける",
+    "parts":["ss","o","z","l"]
+  },
+  "sisu-":{
+    "yomi": "しすー",
+    "imi": "死ぬ",
+    "parts":["ms","ts","z","w"]
+  },
+  "sisumori":{
+    "yomi": "しすもり",
+    "imi": "敵討ち",
+    "parts":["ms","ts","z","w","m","o"]
+  },
+  "nurya":{
+    "yomi": "ぬりゃ",
+    "imi": "無理",
+    "parts":["hs","ss","z","l"]
+  },
+  "reme":{
+    "yomi": "れめ",
+    "imi": "~だから",
+    "parts":["hs","ns","z","u"]
+  },
+  "numo-si":{
+    "yomi": "ぬもーし",
+    "imi": "上げる",
+    "parts":["s","ss","z","m","u"]
+  },
+  "monuyasu-me":{
+    "yomi": "もぬやすーめ",
+    "imi": "ミライドン",
+    "parts":["ms","ns","o","u"]
+  },
+  "syariltu":{
+    "yomi": "しゃりっ",
+    "imi": "たしかに",
+    "parts":["o","m"]
+  },
+  "ore":{
+    "yomi": "おれ",
+    "imi": "俺(主のみが使える一人称)",
+    "parts":["s","ss","o"]
+  },
+  "siltu":{
+    "yomi": "しっ",
+    "imi": "黙る、静かにする",
+    "parts":["hs","ns","z","w","u"]
+  },
+  "risya-tu":{
+    "yomi": "りしゃーつ",
+    "imi": "結局、最後には",
+    "parts":["hs","ts","z","m","w"]
+  },
+  "nu-syassya":{
+    "yomi": "ぬーしゃっしゃ",
+    "imi": "大爆発",
+    "parts":["ms","ss","o","z","m","w","u"]
   }
 }

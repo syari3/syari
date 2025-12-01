@@ -386,5 +386,21 @@
       }
     ],
     "notes": "特になし"
+  },
+  "kapas":  {
+    "reading": "(カ)↑パス",
+    "meaning": "強い",
+    "etymology": "・kap(私)から<br>・カプ神は強いよ！",
+    "examples": [
+      {
+        "kapu": "golazat gu zakap la kapas",
+        "japanese": "強いポケモンは大きい。"
+      },
+      {
+        "kapu": "kapazat gu ton e zakap",
+        "japanese": "彼はポケモンに対して強いよね"
+      }
+    ],
+    "notes": ""
   }
 }

@@ -207,7 +207,7 @@ async function searchReading() {
 }
 
 async function searchJapanese() {
-  const inputValue = document.getElementById("japanese-input").value.trim();
+  const inputValue = document.getElementById("syari-japanese-input").value.trim();
   const filename = 'https://syari-api.onrender.com/data'; // エンドポイントを更新
 
   try {
