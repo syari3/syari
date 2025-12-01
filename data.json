@@ -554,5 +554,35 @@
     "yomi": "ぬーしゃっしゃ",
     "imi": "大爆発",
     "parts":["ms","ss","o","z","m","w","u"]
+  },
+  "sume-me":{
+    "yomi": "すめーめ",
+    "imi": "仕返し",
+    "parts":["s","ts","o","z","l"]
+  },
+  "meri":{
+    "yomi": "めり",
+    "imi": "~かも、不安",
+    "parts":["ts","u"]
+  },
+  "merime":{
+    "yomi": "めりめ",
+    "imi": "出番",
+    "parts":["ts","u","z","o"]
+  },
+  "ri":{
+    "yomi": "り",
+    "imi": "待つ",
+    "parts":["hs","ss","z","u"]
+  },
+  "nusyari"{
+    "yomi": "ぬしゃり",
+    "imi": "ごめん",
+    "parts":["ms","ss","w","l"]
+  },
+  "suyarionu":{
+    "yomi": "すやりおぬ",
+    "imi": "煽る",
+    "parts":["hs","ns","z","w","l","u"]
   }
 }
