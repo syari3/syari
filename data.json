@@ -277,12 +277,12 @@
   },
   "turi-": {
     "yomi": "つりー",
-    "imi": "昨日",
+    "imi": "昨日、前",
     "parts": ["hs","ts","w","o"]
   },
   "tumo-": {
     "yomi": "つもー",
-    "imi": "明日",
+    "imi": "明日、次",
     "parts": ["hs","ss","w","o"]
   },
   "yari": {
@@ -584,5 +584,25 @@
     "yomi": "すやりおぬ",
     "imi": "煽る",
     "parts":["hs","ns","z","w","l","u"]
+  },
+  "yasio-nu":{
+    "yomi": "やしおーぬ",
+    "imi": "関わる、関係する",
+    "parts":["s","ns","z","m","w","u"]
+  },
+  "meyasuyanu":{
+    "yomi": "めやすやぬ",
+    "imi": "テラスタル",
+    "parts":["o","l","u"]
+  },
+  "simetu-":{
+    "yomi": "しめつー",
+    "imi": "入る、登録する",
+    "parts":["ms","ss","z","m","u"]
+  },
+  "syanumenu":{
+    "yomi": "しゃぬめぬ",
+    "imi": "集まり、グループ、チャンネル",
+    "parts":["ms","ss","z","m","u","l"]
   }
 }
