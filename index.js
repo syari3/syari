@@ -39,7 +39,17 @@ app.get('/kap/search/', (req, res) => {
 app.get('/kap/docs/', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'kap/docs.html'));
 });
+app.get('/gule/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'gule/index.html'));
+});
 
+app.get('/gule/search/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'gule/search.html'));
+});
+
+app.get('/gule/docs/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'gule/docs.html'));
+});
 app.get('/syaritatsu/search/', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'syaritatsu/search.html'));
 });
@@ -86,6 +96,7 @@ app.get('/data', (req, res) => {
   });
 });
 
+
 app.get('/kap-data.json', (req, res) => {
   const filename = path.join(__dirname, 'kap-data.json');
 
@@ -105,6 +116,32 @@ app.get('/kap-materials.json', (req, res) => {
   fs.readFile(filename, "utf8", (err, jsonString) => {
     if (err) {
       console.log("Error reading kap-materials.json", err);
+      res.status(500).send('Error reading file');
+      return;
+    }
+    res.json(JSON.parse(jsonString));
+  });
+});
+
+app.get('/gule-data.json', (req, res) => {
+  const filename = path.join(__dirname, 'gule-data.json');
+
+  fs.readFile(filename, "utf8", (err, jsonString) => {
+    if (err) {
+      console.log("Error reading gule-data.json", err);
+      res.status(500).send('Error reading file');
+      return;
+    }
+    res.json(JSON.parse(jsonString));
+  });
+});
+
+app.get('/gule-materials.json', (req, res) => {
+  const filename = path.join(__dirname, 'gule-materials.json');
+
+  fs.readFile(filename, "utf8", (err, jsonString) => {
+    if (err) {
+      console.log("Error reading gule-materials.json", err);
       res.status(500).send('Error reading file');
       return;
     }
