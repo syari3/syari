@@ -17,6 +17,13 @@
 }
 
 @font-face{
+  font-family: "gule-alphabet";
+  src: url("/fonts/gule-alphabet.otf") format("opentype");
+  font-display:swap
+}
+
+
+@font-face{
   font-family: "syari";
   src: url("/fonts/syaritatsu.ttf") format("truetype");
 }
@@ -563,4 +570,8 @@ a:hover {
   color: #01579B;
   line-height: 1.8;
   font-size: clamp(0.95rem, 2.5vw, 1.05rem);
+}
+
+#gule-update-history {
+  font-family: "gule-alphabet", "honokadaze";
 }

@@ -2,10 +2,10 @@
 <html lang="ja">
   <head>
     <meta charset="utf-8" />
-    <title>カプ語検索  - ⁂しゃりー⁂ じっ すりしゃ</title>
+    <title>グレ語検索  - ⁂しゃりー⁂ じっ すりしゃ</title>
     <meta
       name="description"
-      content="kap語の検索ページです。"
+      content="グレ語の検索ページです。"
     />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" href="/img/favicon.ico">
@@ -86,7 +86,7 @@
       }
 
       .result-word {
-        font-family: "kap-alphabet", "kap-original", "honokadaze";
+        font-family: "gule-alphabet", "honokadaze";
         font-size: 1.3rem;
         color: #0288D1;
         font-weight: bold;
@@ -99,7 +99,7 @@
       }
 
       .detail-word {
-        font-family: "kap-alphabet", "kap-original", "honokadaze";
+        font-family: "gule-alphabet", "honokadaze";
         font-size: 2rem;
         color: #0288D1;
         margin-bottom: 20px;
@@ -162,8 +162,8 @@
         background: rgba(255, 255, 255, 0.3);
       }
 
-      .example-kapu {
-        font-family: "kap-alphabet", "kap-original", "honokadaze";
+      .example-gule {
+        font-family: "gule-alphabet", "honokadaze";
         font-size: 1.15rem;
         color: #0288D1;
         margin-bottom: 5px;
@@ -265,15 +265,15 @@
       </div>
     </div>
     <div class="container">
-      <h2 class="center">kap語検索</h2>
+      <h2 class="center">gule語検索</h2>
       <div class="center" style="margin-top: 10px;">
-        <a href="/kap" style="color: #0288D1; text-decoration: none; font-size: 1rem; transition: color 0.3s;">← kap語ホームに戻る</a>
+        <a href="/gule" style="color: #0288D1; text-decoration: none; font-size: 1rem; transition: color 0.3s;">← gule語ホームに戻る</a>
       </div>
     </div>
     <div class="radio-container">
       <div id="search-type2">
         <input type="radio" id="reading-radio" name="search-type" onclick="switchSearchType()">
-        <label for="reading-radio">kap語</label>　
+        <label for="reading-radio">gule語</label>　
       </div>
       <div id="search-type3">
         <input type="radio" id="japanese-radio" name="search-type" onclick="switchSearchType()">
@@ -281,13 +281,13 @@
       </div>
     </div>
     <div class="container" id="reading" style="display: none;">
-      <input type="text" id="reading-input" placeholder="kap語を入力してください">
+      <input type="text" id="reading-input" placeholder="gule語を入力してください">
     </div>
     <div class="container" id="japanese" style="display: none;">
       <input type="text" id="japanese-input" placeholder="日本語を入力してください">
     </div>
     <div class="container" >
-      <button class="search-button" onclick="searchKap()">検索！</button>
+      <button class="search-button" onclick="searchGule()">検索！</button>
     </div>
     <br>
     <div id="main-content">
@@ -297,6 +297,6 @@
         <div id="detail-content"></div>
       </div>
     </div>
-    <script src="/kap-search.js"></script>
+    <script src="/gule-search.js"></script>
   </body>
 </html>

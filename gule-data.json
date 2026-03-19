@@ -1,0 +1,234 @@
+{
+  "lesi": {
+    "reading": "レシ",
+    "meaning": "私、僕、俺、などの一人称",
+    "etymology": "・「グレイシア」の2,4文字目から",
+    "examples": [
+      {
+        "gule": "lesi gu sag.",
+        "japanese": "私は聞く。"
+      },
+      {
+        "gule": "tsali gu hyawa rosha lesi.",
+        "japanese": "あなたが好きだ。"
+      }
+    ],
+    "notes": "たくさん使われる単語はグレイシア語の雰囲気を作るための音を選んでいます。<br>lesiもその一つです。他にはtsali,gu,shaなど"
+  },
+  "tsali": {
+    "reading": "ツァリ",
+    "meaning": "あなた、お前、などの二人称",
+    "etymology": "・⁂しゃりー⁂がtsの音が好きで<br>よく使う単語にtsの音を入れたかった",
+    "examples": [
+      {
+        "gule": "tsali gu hyawa sha nonya.",
+        "japanese": "あなたは家を良くする。"
+      },
+      {
+        "gule": "tsali gu rak sha lani.",
+        "japanese": "あなたは魚を食べる。"
+      }
+    ],
+    "notes": "特になし"
+  },
+  "kyasi": {
+    "reading": "キャシ",
+    "meaning": "彼、彼女、それ、などの三人称",
+    "etymology": "・日本語「彼氏」から？",
+    "examples": [
+      {
+        "gule": "kyasi gu koka sha rak.",
+        "japanese": "彼は食べ物を作る。"
+      },
+      {
+        "gule": "kyasi gu tsol la tsol?",
+        "japanese": "彼女は人か？"
+      }
+    ],
+    "notes": "語源はよくわかりません。"
+  },
+  "gu": {
+    "reading": "グ",
+    "meaning": "[主部と述部の区切り または 存在動詞]、~は、~が",
+    "etymology": "・「グレイシア」の1文字目から",
+    "examples": [
+      {
+        "gule": "koka hyawa gu hyawa sha tsol.",
+        "japanese": "良い活動は人を良くする。"
+      },
+      {
+        "gule": "koka gogi gu hyawa la.",
+        "japanese": "ブラック企業は良くない。"
+      },
+      {
+        "gule": "rik shi shelyo, lesi gu sag sha shi gu koka.",
+        "japanese": "私はそれを聞いて作った。"
+      },
+      {
+        "gule": "kyasi gu tsol hyawa gu tsol yag.",
+        "japanese": "彼はいい人であり、悪い人でもある。"
+      }
+    ],
+    "notes": "guを複数回使うことで「~して~する」、「~であり、~である」という文になります。"
+  },
+  "sha": {
+    "reading": "シャ",
+    "meaning": "[直接目的語の前に置く]、~を",
+    "etymology": "・「グレイシア」の4,5文字目から",
+    "examples": [
+      {
+        "gule": "lyash gu koka sha nonya gile.",
+        "japanese": "ポケモンが大きなすみかをつくる。"
+      },
+      {
+        "gule": "lesi gu gasi sha lani sha kash.",
+        "japanese": "私は魚と鳥を集める。"
+      }
+    ],
+    "notes": "shaを複数回使うことで「~と~を」という文になります。"
+  },
+  "nawi": {
+    "reading": "ナウィ",
+    "meaning": "何か、もの",
+    "etymology": "・日本語「何」から",
+    "examples": [
+      {
+        "gule": "nawi gu nawi sha nawi.",
+        "japanese": "何かが何かを何かする。"
+      },
+      {
+        "gule": "rik nawi shelyo, shea rosha lsa tsali.",
+        "japanese": "いつか、会いにいくね"
+      }
+    ],
+    "notes": "特になし"
+  },
+  "lyash": {
+    "reading": "リャッシュ",
+    "meaning": "ポケモン、(動物)",
+    "etymology": "・gule語「lesi」から<br>・私(グレイシア)はポケモンだよ",
+    "examples": [
+      {
+        "gule": "lyash on tsol gu tsol hyawa.",
+        "japanese": "ポケモンと人は友達だ。"
+      },
+      {
+        "gule": "tsol ware gu tsasa la tsasa sha lyash ware?",
+        "japanese": "人々はポケモンたちを殺さないの？"
+      }
+    ],
+    "notes": "特になし"
+  },
+  "rak": {
+    "reading": "ラーク",
+    "meaning": "食べる、食べ物",
+    "etymology": "・喉の奥で",
+    "examples": [
+      {
+        "gule": "",
+        "japanese": ""
+      },
+      {
+        "gule": "",
+        "japanese": ""
+      }
+    ],
+    "notes": "特になし"
+  },
+  "koka": {
+    "reading": "",
+    "meaning": "",
+    "etymology": "",
+    "examples": [
+      {
+        "gule": "",
+        "japanese": ""
+      },
+      {
+        "gule": "",
+        "japanese": ""
+      }
+    ],
+    "notes": "特になし"
+  },
+  "sag": {
+    "reading": "",
+    "meaning": "",
+    "etymology": "",
+    "examples": [
+      {
+        "gule": "",
+        "japanese": ""
+      },
+      {
+        "gule": "",
+        "japanese": ""
+      }
+    ],
+    "notes": "特になし"
+  },
+  "hyawa": {
+    "reading": "",
+    "meaning": "",
+    "etymology": "",
+    "examples": [
+      {
+        "gule": "",
+        "japanese": ""
+      },
+      {
+        "gule": "",
+        "japanese": ""
+      }
+    ],
+    "notes": "特になし"
+  },
+  "nonya": {
+    "reading": "",
+    "meaning": "",
+    "etymology": "",
+    "examples": [
+      {
+        "gule": "",
+        "japanese": ""
+      },
+      {
+        "gule": "",
+        "japanese": ""
+      }
+    ],
+    "notes": "特になし"
+  },
+  "tsol": {
+    "reading": "",
+    "meaning": "",
+    "etymology": "",
+    "examples": [
+      {
+        "gule": "",
+        "japanese": ""
+      },
+      {
+        "gule": "",
+        "japanese": ""
+      }
+    ],
+    "notes": "特になし"
+  },
+  "": {
+    "reading": "",
+    "meaning": "",
+    "etymology": "",
+    "examples": [
+      {
+        "gule": "",
+        "japanese": ""
+      },
+      {
+        "gule": "",
+        "japanese": ""
+      }
+    ],
+    "notes": "特になし"
+  }
+}
