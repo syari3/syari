@@ -2,8 +2,7 @@
   "syari-": {
     "yomi": "しゃりー",
     "imi": "私 (一人称単数)",
-    "parts": ["s", "ts", "o"],
-    "full": "ok"
+    "parts": ["s", "ts", "o"]
   },
   "ome-": {
     "yomi": "おめー",

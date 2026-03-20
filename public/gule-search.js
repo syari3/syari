@@ -1,3 +1,8 @@
+function id(id) {
+  // 指定したidのやつをとってくる関数
+  return document.getElementById(id);
+}
+
 function switchSearchType() {
   const readingRadio = document.getElementById("reading-radio");
   const japaneseRadio = document.getElementById("japanese-radio");
@@ -11,14 +16,31 @@ function switchSearchType() {
   }
 }
 
-function searchKap() {
+async function sleep(time) {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve();
+    }, time);
+  });
+}
+async function dialog(message) {
+  // ダイアログを表示させる関数
+  id("dialog-cover").style.display = "flex";
+  id("message").textContent = message;
+  for(var i=1; i<=100; i++) {
+    id("dialog-cover").style.opacity = i**2/10000;
+    await sleep(10)
+  }
+}
+
+function searchGule() {
   const readingRadio = document.getElementById("reading-radio");
   const japaneseRadio = document.getElementById("japanese-radio");
   
   if (readingRadio && readingRadio.checked) {
-    searchKapReading();
+    searchGuleReading();
   } else if (japaneseRadio && japaneseRadio.checked) {
-    searchKapJapanese();
+    searchGuleJapanese();
   }
 }
 
@@ -114,21 +136,21 @@ function showDetail(key, item) {
       const exampleItem = document.createElement('div');
       exampleItem.className = 'example-item';
       
-      const kapuText = document.createElement('div');
-      kapuText.className = 'example-kapu';
-      kapuText.textContent = example?.kapu || '';
-      kapuText.style.cursor = 'pointer';
-      kapuText.title = 'クリックで日本語訳を表示';
+      const GuleText = document.createElement('div');
+      GuleText.className = 'example-Gule';
+      GuleText.textContent = example?.gule || '';
+      GuleText.style.cursor = 'pointer';
+      GuleText.title = 'クリックで日本語訳を表示';
       
       const japaneseText = document.createElement('div');
       japaneseText.className = 'example-japanese';
       japaneseText.textContent = example?.japanese || '';
       
-      kapuText.addEventListener('click', () => {
+      GuleText.addEventListener('click', () => {
         japaneseText.classList.toggle('show');
       });
       
-      exampleItem.appendChild(kapuText);
+      exampleItem.appendChild(GuleText);
       exampleItem.appendChild(japaneseText);
       examplesCell.appendChild(exampleItem);
     });
@@ -179,15 +201,15 @@ function showCopyNotification() {
   }, 2000);
 }
 
-async function searchKapReading() {
+async function searchGuleReading() {
   const inputValue = document.getElementById("reading-input").value.trim();
   
   if (!inputValue) {
-    dialog("カプ語を入力してください。");
+    dialog("グレ語を入力してください。");
     return;
   }
   
-  const filename = 'https://syari-api.onrender.com/kap-data.json';
+  const filename = 'https://syari-api.onrender.com/gule-data.json';
 
   try {
     const response = await fetch(filename);
@@ -211,12 +233,12 @@ async function searchKapReading() {
     closeDetail();
     displayResults(results);
   } catch (error) {
-    console.error("Error fetching or parsing kap-data.json", error);
+    console.error("Error fetching or parsing Gule-data.json", error);
     dialog("データの取得中にエラーが発生しました。");
   }
 }
 
-async function searchKapJapanese() {
+async function searchGuleJapanese() {
   const inputValue = document.getElementById("japanese-input").value.trim();
   
   if (!inputValue) {
@@ -224,7 +246,7 @@ async function searchKapJapanese() {
     return;
   }
   
-  const filename = 'https://syari-api.onrender.com/kap-data.json';
+  const filename = 'https://syari-api.onrender.com/gule-data.json';
 
   try {
     const response = await fetch(filename);
@@ -248,7 +270,14 @@ async function searchKapJapanese() {
     closeDetail();
     displayResults(results);
   } catch (error) {
-    console.error("Error fetching or parsing kap-data.json", error);
+    console.error("Error fetching or parsing Gule-data.json", error);
     dialog("データの取得中にエラーが発生しました。");
   }
 }
+
+(function () {
+  id("dialog-btn").addEventListener("click", function () {
+    id("dialog-cover").style.display = "none";
+    id("dialog-cover").style.opacity = 0;
+  })
+})();
