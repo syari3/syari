@@ -50,6 +50,10 @@ app.get('/gule/search/', (req, res) => {
 app.get('/gule/docs/', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'gule/docs.html'));
 });
+
+app.get('/gule/translate/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'gule/translate.html'));
+});
 app.get('/syaritatsu/search/', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'syaritatsu/search.html'));
 });

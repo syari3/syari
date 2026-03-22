@@ -2,7 +2,7 @@
   "lesi": {
     "reading": "レシ",
     "meaning": "私、僕、俺、などの一人称",
-    "etymology": "・「グレイシア」の2,4文字目から",
+    "etymology": "・「グレイシア」の2、4文字目から",
     "examples": [
       {
         "gule": "lesi gu sag.",
@@ -61,7 +61,7 @@
         "japanese": "ブラック企業は良くない。"
       },
       {
-        "gule": "rik shi shelyo, lesi gu sag sha shi gu koka.",
+        "gule": "rik hus shelyo, lesi gu sag sha shi gu koka.",
         "japanese": "私はそれを聞いて作った。"
       },
       {
@@ -74,7 +74,7 @@
   "sha": {
     "reading": "シャ",
     "meaning": "[直接目的語の前に置く]、~を",
-    "etymology": "・「グレイシア」の4,5文字目から",
+    "etymology": "・「グレイシア」の4、5文字目から",
     "examples": [
       {
         "gule": "lyash gu koka sha nonya gile.",
@@ -106,7 +106,7 @@
   "lyash": {
     "reading": "リャッシュ",
     "meaning": "ポケモン、(動物)",
-    "etymology": "・gule語「lesi」から<br>・私(グレイシア)はポケモンだよ",
+    "etymology": "・gule語「lesi」(私)から<br>・私(グレイシア)はポケモンだよ",
     "examples": [
       {
         "gule": "lyash on tsol gu tsol hyawa.",
@@ -122,23 +122,23 @@
   "rak": {
     "reading": "ラーク",
     "meaning": "食べる、食べ物",
-    "etymology": "・喉の奥で",
+    "etymology": "・rとkは喉の奥で鳴らす音だから",
     "examples": [
       {
-        "gule": "",
-        "japanese": ""
+        "gule": "rik shi shelyo, lyash tsali gu rak sha rak.",
+        "japanese": "今、あなたのポケモンが食べ物を食べているよ。"
       },
       {
-        "gule": "",
-        "japanese": ""
+        "gule": "lesi gu newa rak na!",
+        "japanese": "私は何か食べたい！、おなかへった！"
       }
     ],
-    "notes": "特になし"
+    "notes": "動詞か名詞かは文脈で判断してください。"
   },
   "koka": {
-    "reading": "",
-    "meaning": "",
-    "etymology": "",
+    "reading": "コーカ",
+    "meaning": "作る、働く、活動、仕事",
+    "etymology": "・釘を打つ音「カンカン」から？",
     "examples": [
       {
         "gule": "",
