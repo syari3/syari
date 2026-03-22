@@ -121,7 +121,6 @@
       
       async function translateGule() {
         const text = document.getElementById("input").value;
-        const mode = document.querySelector('input[name="mode"]:checked').value;
 
         let url = "https://gule-translate.grandioso-sow.workers.dev/"; // Gemini
 
@@ -154,7 +153,7 @@
                                                                                         ・否定：否定したい語の直後に la（位置で意味差）
                                                                                         ・疑問（Yes/No）：V la V（助動詞・前置詞も同型）
                                                                                         ・疑問応答：V ／ V la
-                                                                                        ・疑問詞：woya（修飾で意味分化）
+                                                                                        ・疑問詞：woya（修飾で意味分化）文の形は変えず、聴きたいところをwoyaにかえる。
                                                                                         ・並列「と」：主語＝on／主語以外＝gu・shaを複数
                                                                                         ・選択「か」：elyu
                                                                                         ・付加「も」：tso、tso shelyo
