@@ -117,7 +117,7 @@
         "japanese": "人々はポケモンたちを殺さないの？"
       }
     ],
-    "notes": "特になし"
+    "notes": "lyash hyawaは「友達」の意味。tsol hyawaも使われる。"
   },
   "rak": {
     "reading": "ラーク",
@@ -137,83 +137,84 @@
   },
   "koka": {
     "reading": "コーカ",
-    "meaning": "作る、働く、活動、仕事",
+    "meaning": "作る、働く、活動、仕事、労力",
     "etymology": "・釘を打つ音「カンカン」から？",
     "examples": [
       {
-        "gule": "",
-        "japanese": ""
+        "gule": "shi gu newa sha koka liye.",
+        "japanese": "それは少しの労力を必要とする。"
       },
       {
-        "gule": "",
-        "japanese": ""
+        "gule": "lesi ware gu koka sha nonya lyash.",
+        "japanese": "私たちはポケモンのすみかを作ります。 "
       }
     ],
     "notes": "特になし"
   },
   "sag": {
-    "reading": "",
-    "meaning": "",
-    "etymology": "",
+    "reading": "サグ",
+    "meaning": "聞く、耳",
+    "etymology": "・日本語「探る」から？",
     "examples": [
       {
-        "gule": "",
-        "japanese": ""
+        "gule": "sag gu sag sha tsokya.",
+        "japanese": "耳は音を聞く。"
       },
       {
-        "gule": "",
-        "japanese": ""
+        "gule": "rik hus shelyo, lesi gu sag sha shi wik tsali.",
+        "japanese": "以前、私はあなたからそれを聞いたことがある。"
       }
     ],
     "notes": "特になし"
   },
   "hyawa": {
-    "reading": "",
-    "meaning": "",
-    "etymology": "",
+    "reading": "ヒャワ",
+    "meaning": "良くする、改善する、良い、優れた、善",
+    "etymology": "・冷たい風の音から<br>・グレイシアにとっての良いもの",
     "examples": [
       {
-        "gule": "",
-        "japanese": ""
+        "gule": "lesi gu uhu hyawa sha nonya yus yesi hyawa.",
+        "japanese": "私は優れた道具を使って家を修理できる。"
       },
       {
-        "gule": "",
-        "japanese": ""
+        "gule": "kyasi gu glesh sha hyawa",
+        "japanese": "彼は善を愛している。"
       }
     ],
     "notes": "特になし"
   },
   "nonya": {
-    "reading": "",
-    "meaning": "",
-    "etymology": "",
+    "reading": "ノーニャ",
+    "meaning": "家、住処、部屋、建物",
+    "etymology": "・安心できそうな音を選んだ。",
     "examples": [
       {
-        "gule": "",
-        "japanese": ""
+        "gule": "lesi gu kak nonya shal."
+        ",
+        "japanese": "私は図書館にいる。"
       },
       {
-        "gule": "",
-        "japanese": ""
+        "gule": "nonya rosha gu hyawa la rosha lyash kyasi. ",
+        "japanese": "彼女のポケモンは車を好まない。"
       }
     ],
-    "notes": "特になし"
+    "notes": "nonya ~ での熟語が多い単語。<br>~の建物の意味。"
   },
   "tsol": {
-    "reading": "",
-    "meaning": "",
-    "etymology": "",
+    "reading": "ツォ(ー)ル",
+    "meaning": "人、トレーナー、人類の、誰か",
+    "etymology": "・gule語「tsali」(あなた)から<br>・あなた(グレイシア視点)は人間だよ",
     "examples": [
       {
-        "gule": "",
-        "japanese": ""
+        "gule": "tsol hyawa lesi gu gule.",
+        "japanese": "私の友達は可愛い。"
       },
       {
-        "gule": "",
-        "japanese": ""
+        "gule": "una tsol gu shi: lyash gu rak.",
+        "japanese": "人間の考えでは、動物は食べ物だ。"
       }
     ],
-    "notes": "特になし"
+    "notes": "tsol hyawaは「友達」の意味。lyash hyawaも使われる。<br>tsol gileは大人、tsol liyeは子どもの意味。"
   },
   "": {
     "reading": "",
