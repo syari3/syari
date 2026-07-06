@@ -105,7 +105,7 @@
   },
   "lyash": {
     "reading": "リャッシュ",
-    "meaning": "ポケモン、(動物)",
+    "meaning": "ポケモン、動物",
     "etymology": "・gule語「lesi」(私)から<br>・私(グレイシア)はポケモンだよ",
     "examples": [
       {
@@ -214,6 +214,294 @@
       }
     ],
     "notes": "tsol hyawaは「友達」の意味。lyash hyawaも使われる。<br>tsol gileは大人、tsol liyeは子どもの意味。"
+  },
+  "gile": {
+    "reading": "ギレ",
+    "meaning": "大きい、長い、貴重な、大切な",
+    "etymology": "・「ギガ」から",
+    "examples": [
+      {
+        "gule": "lyash lesi gu gile ware.",
+        "japanese": "私のポケモンはとても大きい。"
+      },
+      {
+        "gule": "tsol gile gu hona ware.",
+        "japanese": "大人はたくさん知っている。"
+      }
+    ],
+    "notes": "・大きいなのか重要なのかは文脈で判断してください。"
+  },
+  "liye": {
+    "reading": "リイェ",
+    "meaning": "小さい、短い、少ない",
+    "etymology": "・iyeの部分が弱そうだから",
+    "examples": [
+      {
+        "gule": "lyash gu soso hyawa sha tsol liye.",
+        "japanese": "ポケモンは子どもを守る。"
+      },
+      {
+        "gule": "lesi ware gu lea sha rik liye gaso.",
+        "japanese": "私たちには少しの時間しかない。"
+      }
+    ],
+    "notes": "特になし"
+  },
+  "ware": {
+    "reading": "ワーレ",
+    "meaning": "多い、増やす、量、[複数形]　~たち",
+    "etymology": "・日本語「わー」から<br>・量が多いことに驚く声",
+    "examples": [
+      {
+        "gule": "shi gu ware ware.",
+        "japanese": "それは、多くの量があった。"
+      },
+      {
+        "gule": "lyash ware shelyo, shi gu gile.",
+        "japanese": "ポケモンたちにとって、これは重要だ。"
+      }
+    ],
+    "notes": "特になし"
+  },
+  "lase": {
+    "reading": "ラセ",
+    "meaning": "青い、水色の、緑の、悲しい",
+    "etymology": "・gule語「lesi」から<br>・私(グレイシア)は水色だよ",
+    "examples": [
+      {
+        "gule": "kyasi gu lase kak rik shi.",
+        "japanese": "その時、彼女は悲しそうだった。"
+      },
+      {
+        "gule": "lesi gu rak sha huli su lase la.",
+        "japanese": "私は青くない果物を食べた。"
+      }
+    ],
+    "notes": "特になし"
+  },
+  "shashe": {
+    "reading": "シャシェ",
+    "meaning": "新しい、新鮮な",
+    "etymology": "・キラキラとしたイメージから",
+    "examples": [
+      {
+        "gule": "",
+        "japanese": ""
+      },
+      {
+        "gule": "",
+        "japanese": ""
+      }
+    ],
+    "notes": "特になし"
+  },
+  "hyule": {
+    "reading": "ヒューレ",
+    "meaning": "冷たい、寒い、寒さ",
+    "etymology": "・冷たい風の音から",
+    "examples": [
+      {
+        "gule": "",
+        "japanese": ""
+      },
+      {
+        "gule": "",
+        "japanese": ""
+      }
+    ],
+    "notes": "特になし"
+  },
+  "ryewe": {
+    "reading": "リェウェ",
+    "meaning": "狂った、変な、狂わす",
+    "etymology": "・変な人が出してそうな声",
+    "examples": [
+      {
+        "gule": "",
+        "japanese": ""
+      },
+      {
+        "gule": "",
+        "japanese": ""
+      }
+    ],
+    "notes": "特になし"
+  },
+  "la": {
+    "reading": "ラ",
+    "meaning": "無、ゼロ、[直前の語を修飾して否定] ~ない",
+    "etymology": "・グレイシアのレの子音を使って作った",
+    "examples": [
+      {
+        "gule": "",
+        "japanese": ""
+      },
+      {
+        "gule": "",
+        "japanese": ""
+      }
+    ],
+    "notes": "特になし"
+  },
+  "su": {
+    "reading": "ス",
+    "meaning": "[修飾を区切る]",
+    "etymology": "・グレイシアのスの子音を使って作った",
+    "examples": [
+      {
+        "gule": "",
+        "japanese": ""
+      },
+      {
+        "gule": "",
+        "japanese": ""
+      }
+    ],
+    "notes": "特になし"
+  },
+  "ula": {
+    "reading": "ウラ",
+    "meaning": "見る、景色、視覚的な、[助動詞] ~しようとする",
+    "etymology": "・日本語「ちらっ」から？",
+    "examples": [
+      {
+        "gule": "",
+        "japanese": ""
+      },
+      {
+        "gule": "",
+        "japanese": ""
+      }
+    ],
+    "notes": "特になし"
+  },
+  "gasha": {
+    "reading": "ガシャ",
+    "meaning": "壊す、失敗、クソ！",
+    "etymology": "・日本語「ガシャン」から<br>・物の壊れる音",
+    "examples": [
+      {
+        "gule": "",
+        "japanese": ""
+      },
+      {
+        "gule": "",
+        "japanese": ""
+      }
+    ],
+    "notes": "特になし"
+  },
+  "tsasa": {
+    "reading": "ツァサ",
+    "meaning": "殺す、死、殺害、死んだ~",
+    "etymology": "・ナイフの音から",
+    "examples": [
+      {
+        "gule": "",
+        "japanese": ""
+      },
+      {
+        "gule": "",
+        "japanese": ""
+      }
+    ],
+    "notes": "特になし"
+  },
+  "tsokya": {
+    "reading": "ツォーキャ",
+    "meaning": "音を立てる、音、うるさい",
+    "etymology": "・うるさい音を選んだ",
+    "examples": [
+      {
+        "gule": "",
+        "japanese": ""
+      },
+      {
+        "gule": "",
+        "japanese": ""
+      }
+    ],
+    "notes": "特になし"
+  },
+  "lea": {
+    "reading": "レア",
+    "meaning": "持つ、含む、所有する、所持品、飼う",
+    "etymology": "・レアなもの持ってるねー",
+    "examples": [
+      {
+        "gule": "",
+        "japanese": ""
+      },
+      {
+        "gule": "",
+        "japanese": ""
+      }
+    ],
+    "notes": "語源に深い意味はありません。"
+  },
+  "hona": {
+    "reading": "ホーナ",
+    "meaning": "知る、知識、[助動詞] ~をする方法を知っている",
+    "etymology": "・日本語「ふーん」から",
+    "examples": [
+      {
+        "gule": "",
+        "japanese": ""
+      },
+      {
+        "gule": "",
+        "japanese": ""
+      }
+    ],
+    "notes": "特になし"
+  },
+  "lani": {
+    "reading": "ラニ",
+    "meaning": "魚、水生生物、魚類",
+    "etymology": "・gule語「lyusi」(水)から",
+    "examples": [
+      {
+        "gule": "",
+        "japanese": ""
+      },
+      {
+        "gule": "",
+        "japanese": ""
+      }
+    ],
+    "notes": "特になし"
+  },
+  "lyusi": {
+    "reading": "リューシ",
+    "meaning": "水、液体、水やりする",
+    "etymology": "・日本語「流水」から",
+    "examples": [
+      {
+        "gule": "",
+        "japanese": ""
+      },
+      {
+        "gule": "",
+        "japanese": ""
+      }
+    ],
+    "notes": "特になし"
+  },
+  "kash": {
+    "reading": "カーシュ",
+    "meaning": "鳥、鳥類",
+    "etymology": "・カラスの鳴き声から",
+    "examples": [
+      {
+        "gule": "",
+        "japanese": ""
+      },
+      {
+        "gule": "",
+        "japanese": ""
+      }
+    ],
+    "notes": "特になし"
   },
   "": {
     "reading": "",

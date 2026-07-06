@@ -20,10 +20,9 @@ const auxiliaries = [
  * グレイシア語 簡易構文解析器
  * 対応文法:
  * A gu B
- * A gu B sha C
- * 
- * processLa() を先に実行することを前提
+ * A gu B sha C提
  */
+
 
 function parse(sentence) {
 
@@ -39,56 +38,27 @@ function parse(sentence) {
 
     const shaIndex = tokens.findIndex(t => t.text === "sha");
 
-    const subject = tokens.slice(0, guIndex);
+    const subjects = parseSubjectList(
+        tokens.slice(0, guIndex)
+    );
 
     // -----------------------
     // A gu B
     // -----------------------
+
     if (shaIndex === -1) {
 
         const predicateWords = tokens.slice(guIndex + 1);
-        const predicate = parsePredicate(predicateWords);
-
-        // 助動詞があるか？
-        const hasAux = predicate.auxiliaries.length > 0;
+        const predicate = parsePredicate(
+            predicateWords
+        );
 
         return {
             type: "Sentence",
 
-            subject: {
-                type: "NounPhrase",
-                words: subject
-            },
+            subjects: subjects,
 
-            predicate: hasAux
-                ? {
-                    type: "Predicate",
-                    possibilities: [
-                        {
-                            role: "Verb",
-                            auxiliaries: predicate.auxiliaries,
-                            verbPhrase: predicate.verbPhrase
-                        }
-                    ]
-                }
-                : {
-                    type: "Predicate",
-                    possibilities: [
-                        {
-                            role: "Verb",
-                            auxiliaries: [],
-                            verbPhrase: predicate.verbPhrase
-                        },
-                        {
-                            role: "NounPredicate",
-                            words: predicate.verbPhrase
-                        },
-                        {
-                            role: "AdjectivePredicate",
-                            words: predicate.verbPhrase
-                        }
-                    ]
-                }
+            predicate: predicate
         };
     }
 
@@ -100,31 +70,18 @@ function parse(sentence) {
         tokens.slice(guIndex + 1, shaIndex)
     );
 
-    const object = tokens.slice(shaIndex + 1);
+    const objects = parseObjectList(
+        tokens.slice(shaIndex + 1)
+    );
 
     return {
         type: "Sentence",
 
-        subject: {
-            type: "NounPhrase",
-            words: subject
-        },
+        subjects: subjects,
 
-        predicate: {
-            type: "Predicate",
-            possibilities: [
-                {
-                    role: "Verb",
-                    auxiliaries: predicate.auxiliaries,
-                    verbPhrase: predicate.verbPhrase
-                }
-            ]
-        },
+        predicate: predicate,
 
-        object: {
-            type: "NounPhrase",
-            words: object
-        }
+        objects: objects
     };
 }
 
@@ -145,7 +102,7 @@ function processLa(tokens) {
             continue;
         }
 
-        // 文頭、gu直後、sha直後なら「0」
+        // 文頭、gu直後、sha直後なら0
         if (
             result.length === 0 ||
             result[result.length - 1].text === "gu" ||
@@ -153,29 +110,33 @@ function processLa(tokens) {
         ) {
             result.push({
                 text: "la",
-                negated: false,
                 meaning: "zero"
             });
         } else {
-            // 直前を否定
-            result[result.length - 1].negated = true;
+            result.push({
+                text: "la"
+            });
         }
     }
 
     return result;
 }
 
-//助動詞判定
+//候補生成
 function parsePredicate(words) {
 
-    // 単語が無い
     if (words.length === 0) {
         throw new Error("述語がありません。");
     }
 
+    const possibilities = [];
+
+    // --------------------
+    // 助動詞として解釈
+    // --------------------
+
     let verbStart = 0;
 
-    // 先頭から助動詞を探す
     while (
         verbStart < words.length - 1 &&
         auxiliaries.includes(words[verbStart].text)
@@ -183,12 +144,157 @@ function parsePredicate(words) {
         verbStart++;
     }
 
+    if (verbStart > 0) {
+
+        possibilities.push({
+            role: "Verb",
+            auxiliaries: words.slice(0, verbStart),
+            verbPhrase: parseModifier(
+                words.slice(verbStart)
+            )
+        });
+
+    }
+
+    // --------------------
+    // 普通の動詞として解釈
+    // --------------------
+
+    possibilities.push({
+        role: "Verb",
+        auxiliaries: [],
+        verbPhrase: parseModifier(words)
+    });
+
+    // --------------------
+    // 名詞述語
+    // --------------------
+
+    possibilities.push({
+        role: "NounPredicate",
+        tree: parseModifier(words)
+    });
+
+    // --------------------
+    // 形容詞述語
+    // --------------------
+
+    possibilities.push({
+        role: "AdjectivePredicate",
+        tree: parseModifier(words)
+    });
+
     return {
         type: "Predicate",
-
-        auxiliaries: words.slice(0, verbStart),
-
-        // 今はPhraseとして持つ
-        verbPhrase: words.slice(verbStart)
+        possibilities: possibilities
     };
+
+}
+
+//名詞句解析
+function parseNounPhrase(words) {
+    return {
+        type: "NounPhrase",
+        tree: parseModifier(words)
+    };
+}
+
+//主語分割
+function parseSubjectList(words) {
+
+    const subjects = [];
+
+    let start = 0;
+
+    for (let i = 0; i <= words.length; i++) {
+
+        if (i === words.length || words[i].text === "on") {
+
+            subjects.push(
+                parseNounPhrase(
+                    words.slice(start, i)
+                )
+            );
+
+            start = i + 1;
+        }
+
+    }
+
+    return subjects;
+}
+
+//目的語分割
+function parseObjectList(words) {
+
+    const objects = [];
+
+    let start = 0;
+
+    for (let i = 0; i <= words.length; i++) {
+
+        if (i === words.length || words[i].text === "sha") {
+
+            objects.push(
+                parseNounPhrase(
+                    words.slice(start, i)
+                )
+            );
+
+            start = i + 1;
+        }
+
+    }
+
+    return objects;
+}
+
+function parseModifier(words) {
+
+    if (words.length === 0) {
+        return null;
+    }
+
+    // su の数を確認
+    const suCount = words.filter(word => word.text === "su").length;
+
+    if (suCount > 1) {
+        throw new Error("su は1つの名詞句に2回以上使えません。");
+    }
+
+    // su がある場合
+    const suIndex = words.findIndex(word => word.text === "su");
+
+    if (suIndex !== -1) {
+        return {
+            type: "Modify",
+            target: parseModifier(words.slice(0, suIndex)),
+            modifier: parseModifier(words.slice(suIndex + 1))
+        };
+    }
+
+    // 左結合
+    let tree = words[0];
+
+    for (let i = 1; i < words.length; i++) {
+
+        if (words[i].text === "la") {
+
+            tree = {
+                type: "Negate",
+                target: tree
+            };
+
+        } else {
+
+            tree = {
+                type: "Modify",
+                target: tree,
+                modifier: words[i]
+            };
+
+        }
+    }
+
+    return tree;
 }
