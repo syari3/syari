@@ -285,12 +285,12 @@
     "etymology": "・キラキラとしたイメージから",
     "examples": [
       {
-        "gule": "",
-        "japanese": ""
+        "gule": "lesi gu newa yus hyawa sha nawi shashe.",
+        "japanese": "私は新品を大切に使いたい。"
       },
       {
-        "gule": "",
-        "japanese": ""
+        "gule": "rik shi shelyo, shagi shao gu koka shashe.",
+        "japanese": "その時、文法が新しく作られた。"
       }
     ],
     "notes": "特になし"
@@ -301,12 +301,12 @@
     "etymology": "・冷たい風の音から",
     "examples": [
       {
-        "gule": "",
-        "japanese": ""
+        "gule": "tsol ware gu newa ula sha kash su lyusi hyule.",
+        "japanese": "多くの人がペンギンを見たがる。"
       },
       {
-        "gule": "",
-        "japanese": ""
+        "gule": "gule ware gu kak wosi su hyule ware",
+        "japanese": "グレイシアたちはとても冷たい土地にいる。"
       }
     ],
     "notes": "特になし"
@@ -317,60 +317,68 @@
     "etymology": "・変な人が出してそうな声",
     "examples": [
       {
-        "gule": "",
-        "japanese": ""
+        "gule": "yesi ryewe shi gu wakya.",
+        "japanese": "この変な機械は面白い。"
       },
       {
-        "gule": "",
-        "japanese": ""
+        "gule": "tsol gile gaso gu uhu rak sha lyusi ryewe.",
+        "japanese": "大人だけが酒を飲むことができる。"
       }
     ],
     "notes": "特になし"
   },
   "la": {
     "reading": "ラ",
-    "meaning": "無、ゼロ、[直前の語を修飾して否定] ~ない",
+    "meaning": "無、ゼロ、[直前の語を修飾して否定] ~ない、[~ la ~の形で 極性疑問文をつくる]",
     "etymology": "・グレイシアのレの子音を使って作った",
     "examples": [
       {
-        "gule": "",
-        "japanese": ""
+        "gule": "rik tsero shelyo, tsol ware gu una la sha keki la.",
+        "japanese": "最初は、人々は0という数を考えなかった。"
       },
       {
-        "gule": "",
-        "japanese": ""
+        "gule": "lyash gu newa la soso rak sha huli.",
+        "japanese": "ポケモンは果物を食べ続けたくなかった。"
+      },
+      {
+        "gule": "tsali gu newa la newa rak? - newa!",
+        "japanese": "あなたは食べたい？ - うん！"
+      },
+      {
+        "gule": "rak suwi gu hyawa la hyawa rosha kyasi? - hyawa la?",
+        "japanese": "彼って甘い食べ物好き？ - いや？"
       }
     ],
-    "notes": "特になし"
+    "notes": "極性疑問文を作るときの~には、名詞も、動詞も、助動詞も入れられる。"
   },
   "su": {
     "reading": "ス",
     "meaning": "[修飾を区切る]",
-    "etymology": "・グレイシアのスの子音を使って作った",
+    "etymology": "・グレイシアのシの子音を使って作った",
     "examples": [
       {
-        "gule": "",
-        "japanese": ""
+        "gule": "'tsol gile ware' on 'tsol su gile ware' gu rog sha soki.",
+        "japanese": "「大人たち」と、「とても大きな人」では意味が違う。"
       },
       {
-        "gule": "",
-        "japanese": ""
+        "gule": "shi gu yesi su gasha la.",
+        "japanese": "これは壊れてない機械だ。"
       }
     ],
-    "notes": "特になし"
+    "notes": "A su B C は A ← (B C)のように修飾順が変化する。"
   },
   "ula": {
     "reading": "ウラ",
-    "meaning": "見る、景色、視覚的な、[助動詞] ~しようとする",
+    "meaning": "見る、眺める、景色、視覚的な、[助動詞] ~しようとする",
     "etymology": "・日本語「ちらっ」から？",
     "examples": [
       {
-        "gule": "",
-        "japanese": ""
+        "gule": "lesi on tsali gu ula sha ula kak nonya.",
+        "japanese": "私とあなたは家からの景色を眺めた。"
       },
       {
-        "gule": "",
-        "japanese": ""
+        "gule": "rots shi gu ula gasi sha wosi rog.",
+        "japanese": "その男は別の国を探そうとしている。"
       }
     ],
     "notes": "特になし"
@@ -381,12 +389,12 @@
     "etymology": "・日本語「ガシャン」から<br>・物の壊れる音",
     "examples": [
       {
-        "gule": "",
-        "japanese": ""
+        "gule": "glesh lesi gu gasha kak lsa tsali.",
+        "japanese": "私のあなたへの愛は壊れてしまった。"
       },
       {
-        "gule": "",
-        "japanese": ""
+        "gule": "hyawa gu nyola wik gasha.",
+        "japanese": "成功は失敗から来る。(失敗は成功のもと)"
       }
     ],
     "notes": "特になし"
@@ -397,12 +405,12 @@
     "etymology": "・ナイフの音から",
     "examples": [
       {
-        "gule": "",
-        "japanese": ""
+        "gule": "tsasa gu hyawa la ware rosha kyasi.",
+        "japanese": "彼は死をとても嫌っている。"
       },
       {
-        "gule": "",
-        "japanese": ""
+        "gule": "lyash glesh gu tsasa la sha tsol.",
+        "japanese": "なついたポケモンは人を殺さない。"
       }
     ],
     "notes": "特になし"
