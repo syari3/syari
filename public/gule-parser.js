@@ -16,6 +16,115 @@ const auxiliaries = [
     "hona"
 ];
 
+const prepositions = [
+    "kak",
+    "rosha",
+    "wik",
+    "yus",
+    "siha"
+];
+
+function parsePredicateList(words) {
+
+    const list = [];
+
+    let start = 0;
+
+
+    for (let i = 0; i <= words.length; i++) {
+
+
+        if (
+            i === words.length ||
+            words[i].text === "gu" ||
+            words[i].text === "shea"
+        ) {
+
+            const part =
+                words.slice(start, i);
+
+
+            list.push(
+                parsePredicatePart(part)
+            );
+
+
+            start = i + 1;
+
+        }
+
+    }
+
+
+    return list;
+}
+function parsePredicatePart(words) {
+
+    const shaIndex =
+        words.findIndex(
+            t => t.text === "sha"
+        );
+
+
+    // shaなし
+    if (shaIndex === -1) {
+
+        return {
+
+            predicate:
+                parsePredicate(words)
+
+        };
+
+    }
+
+
+    // shaあり
+    const predicateWords =
+        words.slice(0, shaIndex);
+
+
+    const objectWords =
+        words.slice(shaIndex + 1);
+
+
+
+    return {
+
+        predicate:
+            parsePredicateWithObject(
+                predicateWords
+            ),
+
+        objects:
+            parseObjectList(
+                objectWords
+            )
+
+    };
+
+}
+function parsePredicateWithObject(words) {
+
+    if (words.length === 0) {
+        throw new Error("目的語付き述語がありません。");
+    }
+
+
+    return {
+        type: "Predicate",
+
+        possibilities:
+            parsePredicateCore(
+                words,
+                {
+                    allowNonVerb: false
+                }
+            )
+    };
+
+}
+
 /**
  * グレイシア語 簡易構文解析器
  * 対応文法:
@@ -23,65 +132,51 @@ const auxiliaries = [
  * A gu B sha C提
  */
 
+function parse(sentence){
 
-function parse(sentence) {
+    const tokens = processLa(tokenize(sentence));
 
-    const tokens = processLa(
-        tokenize(sentence)
-    );
 
-    const guIndex = tokens.findIndex(t => t.text === "gu");
-
-    if (guIndex === -1) {
-        throw new Error("gu がありません。");
-    }
-
-    const shaIndex = tokens.findIndex(t => t.text === "sha");
-
-    const subjects = parseSubjectList(
-        tokens.slice(0, guIndex)
-    );
-
-    // -----------------------
-    // A gu B
-    // -----------------------
-
-    if (shaIndex === -1) {
-
-        const predicateWords = tokens.slice(guIndex + 1);
-        const predicate = parsePredicate(
-            predicateWords
+    const markerIndex =
+        tokens.findIndex(
+            t =>
+            t.text === "gu" ||
+            t.text === "shea"
         );
 
-        return {
-            type: "Sentence",
 
-            subjects: subjects,
-
-            predicate: predicate
-        };
+    if(markerIndex === -1){
+        throw new Error("gu または shea がありません");
     }
 
-    // -----------------------
-    // A gu B sha C
-    // -----------------------
 
-    const predicate = parsePredicate(
-        tokens.slice(guIndex + 1, shaIndex)
-    );
+    const subjects =
+        parseSubjectList(
+            tokens.slice(0, markerIndex)
+        );
 
-    const objects = parseObjectList(
-        tokens.slice(shaIndex + 1)
-    );
+
+    const predicateTokens =
+        tokens.slice(markerIndex + 1);
+
+
+    const predicates =
+        parsePredicateList(
+            predicateTokens
+        );
+
 
     return {
-        type: "Sentence",
 
-        subjects: subjects,
+        type:
+            tokens[markerIndex].text === "shea"
+            ? "Command"
+            : "Sentence",
 
-        predicate: predicate,
+        subjects,
 
-        objects: objects
+        predicates
+
     };
 }
 
@@ -122,73 +217,207 @@ function processLa(tokens) {
     return result;
 }
 
-//候補生成
+// 述語全体の解析
 function parsePredicate(words) {
 
     if (words.length === 0) {
         throw new Error("述語がありません。");
     }
 
+    return {
+        type: "Predicate",
+        possibilities: parsePredicateCore(words)
+    };
+}
+
+
+// 述語候補生成
+function parsePredicateCore(words,options = {}) {
+
     const possibilities = [];
+
+
+    if (words.length === 0) {
+        return possibilities;
+    }
+
+
+    const first = words[0];
+
+
+    // --------------------
+    // 前置詞として解釈
+    // --------------------
+
+    if (prepositions.includes(first.text)) {
+
+        possibilities.push({
+
+            role: "PrepositionPredicate",
+
+            phrase:
+                parsePrepositionPhrase(words)
+
+        });
+
+    }
+
 
     // --------------------
     // 助動詞として解釈
     // --------------------
 
-    let verbStart = 0;
+    if (auxiliaries.includes(first.text)) {
 
-    while (
-        verbStart < words.length - 1 &&
-        auxiliaries.includes(words[verbStart].text)
-    ) {
-        verbStart++;
+        const rest = words.slice(1);
+
+
+        if (rest.length > 0) {
+
+            const nextCandidates =
+                parsePredicateCore(
+                    rest,
+                    options
+                );
+
+
+            for (const candidate of nextCandidates) {
+
+                possibilities.push({
+
+                    role:
+                        "AuxiliaryPredicate",
+
+                    auxiliary:
+                        first,
+
+                    predicate:
+                        candidate
+
+                });
+
+            }
+
+        }
+
     }
 
-    if (verbStart > 0) {
+
+    // --------------------
+    // 前置詞句を後ろに持つ場合
+    // --------------------
+
+    const split =
+        splitPrepositionPhrase(words);
+
+
+    if (split) {
 
         possibilities.push({
+
             role: "Verb",
-            auxiliaries: words.slice(0, verbStart),
-            verbPhrase: parseModifier(
-                words.slice(verbStart)
-            )
+
+            tree:
+                parseModifier(
+                    split.main
+                ),
+
+            adjunct:
+                parsePrepositionPhrase(
+                    split.preposition
+                )
+
+        });
+
+
+    } else {
+
+
+        // --------------------
+        // 動詞解釈
+        // --------------------
+
+        possibilities.push({
+
+            role: "Verb",
+
+            tree:
+                parseModifier(words)
+
         });
 
     }
 
-    // --------------------
-    // 普通の動詞として解釈
-    // --------------------
 
-    possibilities.push({
-        role: "Verb",
-        auxiliaries: [],
-        verbPhrase: parseModifier(words)
-    });
 
     // --------------------
-    // 名詞述語
+    // 非動詞解釈
+    // shaがある時は禁止
     // --------------------
 
-    possibilities.push({
-        role: "NounPredicate",
-        tree: parseModifier(words)
-    });
+    if (options.allowNonVerb !== false) {
 
-    // --------------------
-    // 形容詞述語
-    // --------------------
+        possibilities.push({
 
-    possibilities.push({
-        role: "AdjectivePredicate",
-        tree: parseModifier(words)
-    });
+            role:
+                "NonVerbPredicate",
+
+            tree:
+                parseModifier(words)
+
+        });
+
+    }
+
+
+    return possibilities;
+
+}
+
+
+
+// 前置詞句
+function parsePrepositionPhrase(words) {
+
+    const prep = words[0];
+
+    const object =
+        parseNounPhrase(
+            words.slice(1)
+        );
+
 
     return {
-        type: "Predicate",
-        possibilities: possibilities
+
+        type: "PrepositionalPhrase",
+
+        preposition: prep,
+
+        object: object
+
     };
 
+}
+
+// 前置詞分割
+function splitPrepositionPhrase(words) {
+
+    for (let i = 1; i < words.length; i++) {
+
+        if (prepositions.includes(words[i].text)) {
+
+            return {
+                main: words.slice(0, i),
+
+                preposition:
+                    words.slice(i)
+            };
+
+        }
+
+    }
+
+    return null;
 }
 
 //名詞句解析
