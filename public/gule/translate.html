@@ -102,6 +102,12 @@
 
     </div>
 
+    <h3 class="center">グレイシア語 構文解析結果</h3>
+
+    <div id="ast-view" class="ast-container"></div>
+
+    <script src="ast-viewer.js"></script>
+
     <h5 class="center">この翻訳機は一日に全ユーザー合計で500回しか使えません。(特に気にする必要はありません。どんどん使ってください。)<br>使えなくなった場合、以下のプロンプトを他のAIに入力して翻訳してもらってください。</h5>
     <div class="container">
       <a class="center" id="prompt">クリックでコピー</a>
@@ -133,7 +139,9 @@
       function translateGule() {
         const text = document.getElementById("input").value;
         const mode = document.querySelector('input[name="mode"]:checked').value;
-        console.log(parse(text));
+        const parsedata = parse(text);
+        showAST(parsedata);
+        console.log(parsedata);
         /*
         let url = "https://gule-translate.grandioso-sow.workers.dev/"; // Gemini
 

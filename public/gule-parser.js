@@ -1,8 +1,14 @@
 function tokenize(sentence) {
+
     return sentence
         .replace(/([.,!?])/g, " $1 ")
         .trim()
-        .split(/\s+/);
+        .split(/\s+/)
+        .filter(
+            token =>
+                ![".", ",", "?", "!"].includes(token)
+        );
+
 }
 
 const auxiliaries = [
@@ -23,6 +29,14 @@ const prepositions = [
     "yus",
     "siha"
 ];
+
+const numberWords = {
+    "yu": 1,
+    "ryu": 2,
+    "yori": 5,
+    "ware": 20,
+    "ri": 100
+};
 
 function parsePredicateList(words) {
 
@@ -134,8 +148,100 @@ function parsePredicateWithObject(words) {
 
 function parse(sentence){
 
-    const tokens = processLa(tokenize(sentence));
+    let tokens =
+        tokenize(sentence);
 
+    const shiResult =
+        processShi(tokens);
+
+    const gasoResult =
+        processGaso(tokens);
+
+
+    tokens =
+        gasoResult.tokens;
+
+    const questionResult =
+        processYesNoQuestion(tokens);
+
+    const woyaResult =
+        processWoya(tokens);
+
+    console.log(tokens)
+
+    const isQuestion =
+        questionResult.isQuestion;
+
+
+    tokens =
+        processLa(
+            questionResult.tokens
+        );
+
+    if(shiResult.hasShi){
+
+
+        const mainTokens =
+            [
+                ...shiResult.main,
+                "shi"
+            ];
+
+
+        const mainResult =
+            parse(
+                mainTokens.join(" ")
+            );
+
+
+        const explanation =
+            parse(
+                shiResult.explanation.join(" ")
+            );
+
+
+        return {
+
+            ...mainResult,
+
+            shi:{
+
+                type:"Explanation",
+
+                content:
+                    explanation
+
+            }
+
+        };
+
+    }
+
+    // shelyo処理
+    const shelyoIndex =
+        tokens.findIndex(
+            t => t.text === "shelyo"
+        );
+
+
+    if (shelyoIndex !== -1) {
+
+        return {
+
+            type:
+                isQuestion
+                ? "Question"
+                : "Shelyo",
+
+            shelyo:
+                parseShelyo(
+                    tokens.slice(0, shelyoIndex),
+                    tokens.slice(shelyoIndex + 1)
+                )
+
+        };
+
+    }
 
     const markerIndex =
         tokens.findIndex(
@@ -146,7 +252,16 @@ function parse(sentence){
 
 
     if(markerIndex === -1){
-        throw new Error("gu または shea がありません");
+
+        return {
+
+            type:"Fragment",
+
+            possibilities:
+                parsePredicate(tokens)
+
+        };
+
     }
 
 
@@ -171,7 +286,21 @@ function parse(sentence){
         type:
             tokens[markerIndex].text === "shea"
             ? "Command"
+            : isQuestion || woyaResult.isQuestion
+            ? "Question"
             : "Sentence",
+
+
+        questionType:
+            woyaResult.isQuestion
+            ? "Woya"
+            : isQuestion
+            ? "YesNo"
+            : null,
+
+        contrast:
+            gasoResult.isContrast,
+
 
         subjects,
 
@@ -220,14 +349,48 @@ function processLa(tokens) {
 // 述語全体の解析
 function parsePredicate(words) {
 
-    if (words.length === 0) {
-        throw new Error("述語がありません。");
+   
+
+    if(words.length === 0){
+
+        return {
+            type:"MissingPredicate"
+        };
+
+    }
+    
+    const elyuIndex =
+        words.findIndex(
+            t => t.text === "elyu"
+        );
+
+    if (elyuIndex !== -1) {
+
+        return {
+
+            type:"Or",
+
+            left:
+                parsePredicate(
+                    words.slice(0,elyuIndex)
+                ),
+
+            right:
+                parsePredicate(
+                    words.slice(elyuIndex+1)
+                )
+
+        };
+
     }
 
+    
     return {
-        type: "Predicate",
-        possibilities: parsePredicateCore(words)
+        type:"Predicate",
+        possibilities:
+            parsePredicateCore(words)
     };
+
 }
 
 
@@ -357,15 +520,39 @@ function parsePredicateCore(words,options = {}) {
 
     if (options.allowNonVerb !== false) {
 
-        possibilities.push({
+        const split = splitPrepositionPhrase(words);
 
-            role:
-                "NonVerbPredicate",
 
-            tree:
-                parseModifier(words)
+        if (split) {
 
-        });
+            possibilities.push({
+
+                role:"NonVerbPredicate",
+
+                tree:
+                    parseNominal(
+                        split.main
+                    ),
+
+                adjunct:
+                    parsePrepositionPhrase(
+                        split.preposition
+                    )
+
+            });
+
+        } else {
+
+            possibilities.push({
+
+                role:"NonVerbPredicate",
+
+                tree:
+                    parseNominal(words)
+
+            });
+
+        }
 
     }
 
@@ -422,10 +609,72 @@ function splitPrepositionPhrase(words) {
 
 //名詞句解析
 function parseNounPhrase(words) {
+
+    
+
+
+    const split =
+        splitPrepositionPhrase(words);
+
+    const elyuIndex =
+        words.findIndex(
+            t => t.text === "elyu"
+        );
+    
+    if (elyuIndex !== -1) {
+    
+            return {
+    
+                type:"Or",
+    
+                left:
+                    parseNounPhrase(
+                        words.slice(0,elyuIndex)
+                    ),
+    
+                right:
+                    parseNounPhrase(
+                        words.slice(elyuIndex+1)
+                    )
+    
+            };
+    
+        }
+    
+    if (split) {
+
+        return {
+
+            type:"NounPhrase",
+
+            head: {
+                possibilities:
+                    parseNominal(
+                        split.main
+                     ),
+            },
+
+            preposition:
+                parsePrepositionPhrase(
+                    split.preposition
+                )
+
+        };
+
+    }
+
+    
+
+
     return {
-        type: "NounPhrase",
-        tree: parseModifier(words)
+
+        type:"NounPhrase",
+
+        head:
+            parseNominal(words)
+
     };
+
 }
 
 //主語分割
@@ -484,6 +733,31 @@ function parseModifier(words) {
         return null;
     }
 
+    const elyuIndex =
+        words.findIndex(
+            t => t.text === "elyu"
+        );
+
+    if (elyuIndex !== -1) {
+
+        return {
+
+            type:"Or",
+
+            left:
+                parseModifier(
+                    words.slice(0,elyuIndex)
+                ),
+
+            right:
+                parseModifier(
+                    words.slice(elyuIndex+1)
+                )
+
+        };
+
+    }
+
     // su の数を確認
     const suCount = words.filter(word => word.text === "su").length;
 
@@ -526,4 +800,475 @@ function parseModifier(words) {
     }
 
     return tree;
+}
+
+
+// 疑問文かどうか
+function processYesNoQuestion(tokens) {
+
+    for (let i = 1; i < tokens.length - 1; i++) {
+
+        if (
+            tokens[i] === "la" &&
+            tokens[i - 1] === tokens[i + 1]
+        ) {
+
+            return {
+                isQuestion: true,
+
+                tokens: [
+                    ...tokens.slice(0, i),
+                    ...tokens.slice(i + 2)
+                ]
+            };
+
+        }
+
+    }
+
+
+    return {
+        isQuestion: false,
+        tokens
+    };
+
+}
+
+
+// shelyoの解析
+function parseShelyo(contextWords, mainWords) {
+
+
+return {
+
+    context:
+        parseContext(
+            contextWords
+        ),
+
+
+    main:
+        parse(
+            mainWords
+            .map(t => t.text)
+            .join(" ")
+        )
+
+};
+
+}
+
+// shelyoのコンテクスト解析
+function parseContext(words) {
+
+
+const possibilities = [];
+
+
+// --------------------
+// guあり
+// 普通の文として解析
+// --------------------
+
+const hasGu =
+    words.some(
+        w => w.text === "gu"
+    );
+
+
+if (hasGu) {
+
+    possibilities.push({
+
+        role:"Sentence",
+
+        value:
+            parse(
+                words
+                .map(w => w.text)
+                .join(" ")
+            )
+
+    });
+
+
+    return possibilities;
+
+}
+
+
+// --------------------
+// shaあり
+// 述語 + 目的語
+// --------------------
+
+const hasSha =
+    words.some(
+        w => w.text === "sha"
+    );
+
+
+if (hasSha) {
+
+
+    possibilities.push({
+
+        role:"PredicateWithObject",
+
+        value:
+            parsePredicatePart(
+                words
+            )
+
+    });
+
+
+    return possibilities;
+
+}
+
+
+
+// --------------------
+// guもshaもない
+// 名詞句・動詞句両方
+// --------------------
+
+
+possibilities.push({
+
+    role:"Predicate",
+
+    value:
+        parsePredicate(
+            words
+        )
+
+});
+
+
+return possibilities;
+
+}
+
+
+// woyaの解析
+function processWoya(tokens) {
+
+    return {
+
+        isQuestion:
+            tokens.some(
+                t => t === "woya"
+            )
+
+    };
+
+}
+
+
+// elyuの解析
+function parseElyu(words, parser) {
+
+    const index =
+        words.findIndex(
+            t => t.text === "elyu"
+        );
+
+
+    // elyuなし
+    if (index === -1) {
+
+        return parser(words);
+
+    }
+
+
+    // 左右に分割
+    const left =
+        words.slice(0, index);
+
+    const right =
+        words.slice(index + 1);
+
+
+
+    return {
+
+        type:"Or",
+
+        left:
+            parser(left),
+
+        right:
+            parseElyu(
+                right,
+                parser
+            )
+
+    };
+
+}
+
+// 文頭gasoの処理
+function processGaso(tokens){
+
+    if(tokens[0] === "gaso"){
+
+        return {
+            isContrast:true,
+
+            tokens:
+                tokens.slice(1)
+        };
+
+    }
+
+
+    return {
+        isContrast:false,
+
+        tokens
+    };
+
+}
+
+// 数字として扱われる単語か
+function isNumberWord(word) {
+
+    return (
+        word.text === "la" ||
+        numberWords[word.text] !== undefined
+    );
+
+}
+
+
+// 数字の解析
+function parseNumber(words, allowZero=false) {
+
+    let value = 0;
+
+
+    for (const word of words) {
+
+
+        if (word.text === "la") {
+
+            if (allowZero) {
+                value += 0;
+            }
+
+            continue;
+
+        }
+
+
+        value += numberWords[word.text];
+
+    }
+
+
+    return value;
+
+}
+
+// 数字の並びを探す
+function findNumberSequence(words, startIndex=0) {
+
+
+    let start = -1;
+    let end = -1;
+
+
+    for (let i = startIndex; i < words.length; i++) {
+
+
+        if (isNumberWord(words[i])) {
+
+
+            if (start === -1) {
+                start = i;
+            }
+
+
+            end = i;
+
+
+        } else {
+
+
+            if (start !== -1) {
+                break;
+            }
+
+        }
+
+    }
+
+
+    if (start === -1) {
+        return null;
+    }
+
+
+    return {
+
+        start,
+
+        end,
+
+        words:
+            words.slice(start,end+1)
+
+    };
+
+}
+
+
+// kekiの解析
+function parseOrdinal(words) {
+
+
+    for (let i = 0; i < words.length - 1; i++) {
+
+
+        if (words[i].text === "keki") {
+
+
+            const seq =
+                findNumberSequence(
+                    words,
+                    i + 1
+                );
+
+
+            if (seq) {
+
+
+                return {
+
+                    index:i,
+
+
+                    value:
+                        parseNumber(
+                            seq.words,
+                            true
+                        ),
+
+                    end:
+                        seq.end
+
+                };
+
+            }
+
+        }
+
+    }
+
+
+    return null;
+
+}
+
+
+// 句の数字の解析
+function parseNominal(words){
+
+    const possibilities = [];
+
+
+    const ordinal =
+        parseOrdinal(words);
+
+
+    if (ordinal) {
+
+        possibilities.push({
+
+            type:"Ordinal",
+
+            value:
+                ordinal.value
+
+        });
+
+        return possibilities;
+
+    }
+
+
+
+    const numberSeq =
+        findNumberSequence(words);
+
+
+    if(numberSeq){
+
+        possibilities.push({
+
+            type:"Number",
+
+            value:
+                parseNumber(
+                    numberSeq.words
+                )
+
+        });
+
+
+    }
+
+
+    possibilities.push({
+
+        type:"Modifier",
+
+        tree:
+            parseModifier(words)
+
+    });
+
+
+    return possibilities;
+
+}
+
+function processShi(tokens) {
+
+    const index =
+        tokens.findIndex(
+            t => t === "shi:"
+        );
+
+
+    if(index === -1){
+
+        return {
+
+            hasShi:false,
+
+            tokens
+
+        };
+
+    }
+
+
+    return {
+
+        hasShi:true,
+
+
+        main:
+            tokens.slice(0,index),
+
+
+        explanation:
+            tokens.slice(index + 1)
+
+    };
+
 }
