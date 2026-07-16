@@ -117,7 +117,7 @@
         "japanese": "人々はポケモンたちを殺さないの？"
       }
     ],
-    "notes": "lyash hyawaは「友達」の意味。tsol hyawaも使われる。"
+    "notes": "lyash hyawaは「友達」の意味。tsol hyawaも使われる。<br>動物の意味で使うときは、哺乳類を指すことが多い。"
   },
   "rak": {
     "reading": "ラーク",
@@ -473,24 +473,24 @@
         "japanese": "魚の集団がこの海にいる。"
       },
       {
-        "gule": "",
-        "japanese": ""
+        "gule": "lani su rena gile gu lea sha lyusi yag.",
+        "japanese": "海月(クラゲ)は毒を持っている。"
       }
     ],
     "notes": "特になし"
   },
   "lyusi": {
     "reading": "リューシ",
-    "meaning": "水、液体、水やりする",
+    "meaning": "水、液体、水やりする、水で洗う",
     "etymology": "・日本語「流水」から",
     "examples": [
       {
-        "gule": "",
-        "japanese": ""
+        "gule": "tsali gu lyusi sha huli.",
+        "japanese": "あなたは果物を水洗いする。"
       },
       {
-        "gule": "",
-        "japanese": ""
+        "gule": "kak la lyusi shelyo lyash gu uhu la kak.",
+        "japanese": "水がないと、動物は存在できない。"
       }
     ],
     "notes": "特になし"
@@ -501,12 +501,12 @@
     "etymology": "・カラスの鳴き声から",
     "examples": [
       {
-        "gule": "",
-        "japanese": ""
+        "gule": "kash gu koka sha nonya reki.",
+        "japanese": "鳥は巣を作る。"
       },
       {
-        "gule": "",
-        "japanese": ""
+        "gule": "lesi gu newa rosha ish siha kash na!",
+        "japanese": "鳥のように空を飛びたいな！"
       }
     ],
     "notes": "特になし"
